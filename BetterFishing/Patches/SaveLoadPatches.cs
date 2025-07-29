@@ -11,9 +11,10 @@ namespace BetterFishing
 {
     internal class SaveLoadPatches
     {
-        internal static List<BF_FishingRodHolder> SavedFishingRodHolders { get; set; } = new List<BF_FishingRodHolder>();
-        internal static List<ShipItemFishingRod> SavedShipItemFishingRods { get; set; } = new List<ShipItemFishingRod>();
-        private static int _rodsAttached = 0;
+        internal static List<BF_ShipItemHolder> SavedShipItemHolders { get; set; } = new List<BF_ShipItemHolder>();
+        internal static List<ShipItem> SavedShipItems { get; set; } = new List<ShipItem>();
+
+        private static int _itemsAttached = 0;
 
         [HarmonyPatch(typeof(SaveLoadManager))]
         private class SaveLoadManagerPatches
@@ -24,7 +25,7 @@ namespace BetterFishing
             {
                 var saveContainer = new BetterFishingSaveContainer
                 {
-                    fishingRodHolders = FishingRodHolders.ToDictionary(
+                    fishingRodHolders = ItemHolders.ToDictionary(
                         entry => entry.Key.GetComponent<SaveablePrefab>().instanceId,
                         entry => entry.Value.GetComponent<SaveablePrefab>().instanceId
                     )
@@ -55,22 +56,23 @@ namespace BetterFishing
             internal static IEnumerator AttachRods(KeyValuePair<int, int> entry, int holdersAttached)
             {
                 yield return new WaitUntil(() => !GameState.currentlyLoading);
-                var rod = SavedShipItemFishingRods.Where(r => r.GetComponent<SaveablePrefab>().instanceId == entry.Key).FirstOrDefault();
-                var holder = SavedFishingRodHolders.Where(h => h.GetComponent<SaveablePrefab>().instanceId == entry.Value).FirstOrDefault();
+                var item = SavedShipItems.Where(r => r.GetComponent<SaveablePrefab>().instanceId == entry.Key).FirstOrDefault();
+                var holder = SavedShipItemHolders.Where(h => h.GetComponent<SaveablePrefab>().instanceId == entry.Value).FirstOrDefault();
 
-                if (rod == null || holder == null)
+                if (item == null || holder == null)
                 {
-                    LogWarning($"Failed to find rod or holder for saved fishing rod holder. Rod: {rod} ID: {entry.Key}, Holder: {holder} ID: {entry.Value}.");
+                    LogWarning($"Failed to find item or holder for saved fishing rod holder. Item: {item} ID: {entry.Key}, Holder: {holder} ID: {entry.Value}.");
                     yield return null;
                 }
-                holder.AttachRod(rod);
-                _rodsAttached++;
 
-                if (_rodsAttached == holdersAttached)
+                holder.AttachItem(item);
+                _itemsAttached++;
+
+                if (_itemsAttached == holdersAttached)
                 {
-                    LogDebug($"All rods attached: {_rodsAttached}/{holdersAttached}");
-                    SavedFishingRodHolders.Clear();
-                    SavedShipItemFishingRods.Clear();
+                    LogDebug($"All items attached: {_itemsAttached}/{holdersAttached}");
+                    SavedShipItemHolders.Clear();
+                    SavedShipItems.Clear();
                 }
             }
         }

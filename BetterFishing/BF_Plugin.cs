@@ -14,12 +14,13 @@ namespace BetterFishing
     {
         public const string PLUGIN_GUID = "com.raddude82.betterfishing";
         public const string PLUGIN_NAME = "BetterFishing";
-        public const string PLUGIN_VERSION = "1.0.0";
+        public const string PLUGIN_VERSION = "1.0.1";
 
         public const string MODSAVEBACKUPS_GUID = "com.raddude82.modsavebackups";
         public const string MODSAVEBACKUPS_VERSION = "1.1.1";
 
         public const string IDLE_FISHING_GUID = "com.isa_idlefishing.patch";
+
         internal static BF_Plugin Instance { get; private set; }
         private static ManualLogSource _logger;
 
@@ -29,7 +30,7 @@ namespace BetterFishing
         internal static void LogError(string message) => _logger.LogError(message);
 
         [SerializeField]
-        internal static Dictionary<ShipItemFishingRod, BF_FishingRodHolder> FishingRodHolders { get; set; }
+        internal static Dictionary<ShipItem, BF_ShipItemHolder> ItemHolders { get; set; }
         internal static bool IdleFishingFound { get; private set; } = false;
 
         private void Awake()
@@ -42,7 +43,7 @@ namespace BetterFishing
             Instance = this;
             _logger = Logger;
 
-            FishingRodHolders = new Dictionary<ShipItemFishingRod, BF_FishingRodHolder>();
+            ItemHolders = new Dictionary<ShipItem, BF_ShipItemHolder>();
 
             Configs.InitializeConfigs();
 

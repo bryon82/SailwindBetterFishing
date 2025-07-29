@@ -4,9 +4,10 @@ Sailwind mod that makes the fishing experience better 🎣😎
 
 ## Features
 
-* Adds the ability to attach the fishing rod to the lamp hook. If you cast the line first and then attach the rod, fishing will continue. The rate at which you catch fish will be lower than if were holding the fishing rod. The idle fishing mod is not needed, however this mod is compatible with it and the catch rate when in the holder is slightly higher than if the rod is loose on the deck.
+* Adds the ability to attach a fishing rod to a lamp hook. If you cast the line first and then attach the rod, fishing will continue. The rate at which you catch fish will be lower than if were holding the fishing rod. The idle fishing mod is not needed, however this mod is compatible with it and the catch rate when in the holder is slightly higher than if the rod is loose on the deck.
 * Fish move when caught instead of remaining motionless. Their speed will depend on their species. 
 * Fish will have different tension on the line depending on their species.
+* Adds the ability to attach a broom to a lamp hook.
 <br>
 
 ![Screenshot of fishing rod in holder](https://github.com/bryon82/SailwindBetterFishing/blob/main/Screenshots/rodInHolder.png)

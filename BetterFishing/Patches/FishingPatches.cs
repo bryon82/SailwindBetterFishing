@@ -151,7 +151,7 @@ namespace BetterFishing
                 return false;
             }
 
-            [HarmonyBefore(new string[] { "com.isa_idlefishing.patch" })]
+            [HarmonyBefore(new string[] { IDLE_FISHING_GUID })]
             [HarmonyPostfix]
             [HarmonyPatch("Update")]
             public static void Postfix(
@@ -163,7 +163,7 @@ namespace BetterFishing
             {
                 if (__instance.currentFish != null ||
                     ___rod.health <= 0f ||
-                    !FishingRodHolders.ContainsKey(___rod) ||
+                    !ItemHolders.ContainsKey(___rod) ||
                     !___floater.InWater ||
                     ___bobberJoint.linearLimit.limit <= 1f ||
                     __instance.gameObject.layer == 16)
