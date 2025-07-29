@@ -14,7 +14,7 @@ namespace BetterFishing
     {
         public const string PLUGIN_GUID = "com.raddude82.betterfishing";
         public const string PLUGIN_NAME = "BetterFishing";
-        public const string PLUGIN_VERSION = "1.0.1";
+        public const string PLUGIN_VERSION = "1.0.2";
 
         public const string MODSAVEBACKUPS_GUID = "com.raddude82.modsavebackups";
         public const string MODSAVEBACKUPS_VERSION = "1.1.1";

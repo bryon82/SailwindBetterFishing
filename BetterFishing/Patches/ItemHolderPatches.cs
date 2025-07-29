@@ -4,7 +4,7 @@ using static BetterFishing.BF_Plugin;
 
 namespace BetterFishing.Patches
 {
-    internal class RodHolderPatches
+    internal class ItemHolderPatches
     {
         [HarmonyPatch(typeof(ShipItem))]
         private class ShipItemFishingHookPatches
@@ -28,12 +28,7 @@ namespace BetterFishing.Patches
             [HarmonyPatch("AllowOnItemClick")]
             public static bool AllowOnItemClick(GoPointerButton lookedAtButton, ShipItem __instance, ref bool __result)
             {
-                if (__instance is ShipItemFishingRod && (bool)lookedAtButton.GetComponent<BF_ShipItemHolder>())
-                {
-                    __result = true;
-                    return false;
-                }
-                if (__instance is ShipItemBroom && (bool)lookedAtButton.GetComponent<BF_ShipItemHolder>())
+                if ((__instance is ShipItemFishingRod || __instance is ShipItemBroom || __instance is ShipItemChipLog || __instance is ShipItemQuadrant) && (bool)lookedAtButton.GetComponent<BF_ShipItemHolder>())
                 {
                     __result = true;
                     return false;
@@ -46,19 +41,10 @@ namespace BetterFishing.Patches
             [HarmonyPatch("OnPickup")]
             public static void OnShipItemPickup(ShipItem __instance)
             {
-                if ((__instance is ShipItemFishingRod fishingRod) && ItemHolders.ContainsKey(fishingRod))
+                if ((__instance is ShipItemFishingRod || __instance is ShipItemBroom || __instance is ShipItemChipLog || __instance is ShipItemQuadrant) && ItemHolders.ContainsKey(__instance))
                 {
-                    var holder = ItemHolders[fishingRod];
-                    if (holder != null && holder.AttachedItem == fishingRod)
-                    {
-                        holder.DetachItem();
-                    }
-                }
-
-                if ((__instance is ShipItemBroom broom) && ItemHolders.ContainsKey(broom))
-                {
-                    var holder = ItemHolders[broom];
-                    if (holder != null && holder.AttachedItem == broom)
+                    var holder = ItemHolders[__instance];
+                    if (holder != null && holder.AttachedItem == __instance)
                     {
                         holder.DetachItem();
                     }
@@ -66,16 +52,33 @@ namespace BetterFishing.Patches
             }
         }
 
-        [HarmonyPatch(typeof(ShipItemFishingRod))]
+        [HarmonyPatch(typeof(ShipItemFishingRod), "OnLoad")]
         private class ShipItemFishingRodPatches
         {
-            [HarmonyPostfix]
-            [HarmonyPatch("OnLoad")]
-            public static void OnLoadAddSavedFishingRod(ShipItemFishingRod __instance)
+            public static void Postfix(ShipItemFishingRod __instance)
             {
                 SaveLoadPatches.SavedShipItems.Add(__instance);
             }
         }
+
+        [HarmonyPatch(typeof(ShipItemChipLog), "OnLoad")]
+        private class ShipItemChipLogPatches
+        {
+            public static void Postfix(ShipItemChipLog __instance)
+            {
+                SaveLoadPatches.SavedShipItems.Add(__instance);
+            }
+        }
+
+        [HarmonyPatch(typeof(ShipItemQuadrant), "OnLoad")]
+        private class ShipItemQuadrantPatches
+        {
+            public static void Postfix(ShipItemQuadrant __instance)
+            {
+                SaveLoadPatches.SavedShipItems.Add(__instance);
+            }
+        }
+
 
         [HarmonyPatch(typeof(ShipItemLampHook))]
         private class ShipItemLampHookPatches
@@ -113,18 +116,10 @@ namespace BetterFishing.Patches
                     return false;
                 }
 
-                var fishingRod = heldItem.GetComponent<ShipItemFishingRod>();
-                if (fishingRod != null && fishingRod.sold)
+                var item = heldItem.GetComponent<ShipItem>();
+                if ((item is ShipItemFishingRod || item is ShipItemBroom || item is ShipItemChipLog || item is ShipItemQuadrant) && item.sold)
                 {
-                    holder.AttachItem(fishingRod);
-                    __result = true;
-                    return false;
-                }
-
-                var broom = heldItem.GetComponent<ShipItemBroom>();
-                if (broom != null && broom.sold)
-                {
-                    holder.AttachItem(broom);
+                    holder.AttachItem(item);
                     __result = true;
                     return false;
                 }
@@ -158,6 +153,18 @@ namespace BetterFishing.Patches
                     ___textLicon.gameObject.SetActive(true);
                     ___showingIcon = true;
                     ___controlsText.text = "attach broom\n";
+                }
+                else if (lampHook != null && (bool)___pointer.GetHeldItem()?.GetComponent<ShipItemChipLog>() && !lampHook.GetComponent<BF_ShipItemHolder>().IsOccupied)
+                {
+                    ___textLicon.gameObject.SetActive(true);
+                    ___showingIcon = true;
+                    ___controlsText.text = "attach chip log\n";
+                }
+                else if (lampHook != null && (bool)___pointer.GetHeldItem()?.GetComponent<ShipItemQuadrant>() && !lampHook.GetComponent<BF_ShipItemHolder>().IsOccupied)
+                {
+                    ___textLicon.gameObject.SetActive(true);
+                    ___showingIcon = true;
+                    ___controlsText.text = "attach quadrant\n";
                 }
             }
         }
