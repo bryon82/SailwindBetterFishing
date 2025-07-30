@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.0.3] - 2025-07-30
+
+### Added
+- Lamp hook can hold a knife.
+
+### Fixed
+- Bug from not handling cache of boat items properly that was also causing errors when attempting to save.
+
+### Removed
+- Dependency on ModSaveBackups
+
 ## [v1.0.2] - 2025-07-29
 
 ### Added

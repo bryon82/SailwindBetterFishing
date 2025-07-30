@@ -7,28 +7,26 @@ namespace BetterFishing.Patches
     internal class ItemHolderPatches
     {
         [HarmonyPatch(typeof(ShipItem))]
-        private class ShipItemFishingHookPatches
+        private class ShipItemPatches
         {
             [HarmonyPostfix]
             [HarmonyPatch("OnLoad")]
             public static void OnLoadAddSavedFishingRodHolder(ShipItem __instance)
             {
                 if (__instance is ShipItemLampHook)
-                {
-                    var holder = __instance.gameObject.AddComponent<BF_ShipItemHolder>();
-                    SaveLoadPatches.SavedShipItemHolders.Add(holder);
-                }
+                    __instance.gameObject.AddComponent<BF_ShipItemHolder>();
+
                 if (__instance is ShipItemBroom broom)
-                {                    
-                    SaveLoadPatches.SavedShipItems.Add(broom);
-                }
+                    broom.gameObject.AddComponent<BF_HolderAttachable>();
             }
 
             [HarmonyPrefix]
             [HarmonyPatch("AllowOnItemClick")]
             public static bool AllowOnItemClick(GoPointerButton lookedAtButton, ShipItem __instance, ref bool __result)
             {
-                if ((__instance is ShipItemFishingRod || __instance is ShipItemBroom || __instance is ShipItemChipLog || __instance is ShipItemQuadrant) && (bool)lookedAtButton.GetComponent<BF_ShipItemHolder>())
+                if (__instance.GetComponent<BF_HolderAttachable>() != null &&
+                    lookedAtButton.GetComponent<BF_ShipItemHolder>() != null &&
+                    !lookedAtButton.GetComponent<BF_ShipItemHolder>().IsOccupied)
                 {
                     __result = true;
                     return false;
@@ -41,13 +39,11 @@ namespace BetterFishing.Patches
             [HarmonyPatch("OnPickup")]
             public static void OnShipItemPickup(ShipItem __instance)
             {
-                if ((__instance is ShipItemFishingRod || __instance is ShipItemBroom || __instance is ShipItemChipLog || __instance is ShipItemQuadrant) && ItemHolders.ContainsKey(__instance))
+                if (__instance.GetComponent<BF_HolderAttachable>() != null && AttachedItems.ContainsKey(__instance))
                 {
-                    var holder = ItemHolders[__instance];
+                    var holder = AttachedItems[__instance];
                     if (holder != null && holder.AttachedItem == __instance)
-                    {
                         holder.DetachItem();
-                    }
                 }
             }
         }
@@ -57,7 +53,7 @@ namespace BetterFishing.Patches
         {
             public static void Postfix(ShipItemFishingRod __instance)
             {
-                SaveLoadPatches.SavedShipItems.Add(__instance);
+                __instance.gameObject.AddComponent<BF_HolderAttachable>();
             }
         }
 
@@ -66,7 +62,7 @@ namespace BetterFishing.Patches
         {
             public static void Postfix(ShipItemChipLog __instance)
             {
-                SaveLoadPatches.SavedShipItems.Add(__instance);
+                __instance.gameObject.AddComponent<BF_HolderAttachable>();
             }
         }
 
@@ -75,7 +71,31 @@ namespace BetterFishing.Patches
         {
             public static void Postfix(ShipItemQuadrant __instance)
             {
-                SaveLoadPatches.SavedShipItems.Add(__instance);
+                __instance.gameObject.AddComponent<BF_HolderAttachable>();
+            }
+        }
+
+        [HarmonyPatch(typeof(ShipItemKnife), "OnLoad")]
+        private class ShipItemKnifePatches
+        {
+            [HarmonyPostfix]
+            [HarmonyPatch("OnLoad")]
+            public static void AddComponent(ShipItemKnife __instance)
+            {
+                __instance.gameObject.AddComponent<BF_HolderAttachable>();
+            }
+
+            [HarmonyPrefix]
+            [HarmonyPatch("AllowOnItemClick")]
+            public static bool AllowOnItemClick(GoPointerButton lookedAtButton, ref bool __result)
+            {
+                if ((bool)lookedAtButton.GetComponent<BF_ShipItemHolder>() && !lookedAtButton.GetComponent<BF_ShipItemHolder>().IsOccupied)
+                {
+                    __result = true;
+                    return false;
+                }
+
+                return true;
             }
         }
 
@@ -117,7 +137,7 @@ namespace BetterFishing.Patches
                 }
 
                 var item = heldItem.GetComponent<ShipItem>();
-                if ((item is ShipItemFishingRod || item is ShipItemBroom || item is ShipItemChipLog || item is ShipItemQuadrant) && item.sold)
+                if (item.GetComponent<BF_HolderAttachable>() != null && item.sold)
                 {
                     holder.AttachItem(item);
                     __result = true;
@@ -133,7 +153,7 @@ namespace BetterFishing.Patches
         {
             [HarmonyPostfix]
             [HarmonyPatch("ShowLookText")]
-            public static void ShowLookText(GoPointerButton button, LookUI __instance, TextMesh ___controlsText, GoPointer ___pointer, TextMesh ___textLicon, ref bool ___showingIcon)
+            public static void ShowLookText(GoPointerButton button,TextMesh ___controlsText, GoPointer ___pointer, TextMesh ___textLicon, ref bool ___showingIcon)
             {
                 var lampHook = button.GetComponent<ShipItemLampHook>();
                 if (lampHook != null && (bool)___pointer.GetHeldItem() && lampHook.GetComponent<BF_ShipItemHolder>().IsOccupied)
@@ -142,29 +162,11 @@ namespace BetterFishing.Patches
                     ___showingIcon = false;
                     ___controlsText.text = "";
                 }
-                else if (lampHook != null && (bool)___pointer.GetHeldItem()?.GetComponent<ShipItemFishingRod>() && !lampHook.GetComponent<BF_ShipItemHolder>().IsOccupied)
+                else if (lampHook != null && (bool)___pointer.GetHeldItem()?.GetComponent<BF_HolderAttachable>() && !lampHook.GetComponent<BF_ShipItemHolder>().IsOccupied)
                 {
                     ___textLicon.gameObject.SetActive(true);
                     ___showingIcon = true;
-                    ___controlsText.text = "attach rod\n";
-                }
-                else if (lampHook != null && (bool)___pointer.GetHeldItem()?.GetComponent<ShipItemBroom>() && !lampHook.GetComponent<BF_ShipItemHolder>().IsOccupied)
-                {
-                    ___textLicon.gameObject.SetActive(true);
-                    ___showingIcon = true;
-                    ___controlsText.text = "attach broom\n";
-                }
-                else if (lampHook != null && (bool)___pointer.GetHeldItem()?.GetComponent<ShipItemChipLog>() && !lampHook.GetComponent<BF_ShipItemHolder>().IsOccupied)
-                {
-                    ___textLicon.gameObject.SetActive(true);
-                    ___showingIcon = true;
-                    ___controlsText.text = "attach chip log\n";
-                }
-                else if (lampHook != null && (bool)___pointer.GetHeldItem()?.GetComponent<ShipItemQuadrant>() && !lampHook.GetComponent<BF_ShipItemHolder>().IsOccupied)
-                {
-                    ___textLicon.gameObject.SetActive(true);
-                    ___showingIcon = true;
-                    ___controlsText.text = "attach quadrant\n";
+                    ___controlsText.text = $"attach {___pointer.GetHeldItem()?.GetComponent<ShipItem>()?.name}\n";
                 }
             }
         }

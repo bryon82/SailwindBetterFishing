@@ -163,7 +163,7 @@ namespace BetterFishing
             {
                 if (__instance.currentFish != null ||
                     ___rod.health <= 0f ||
-                    !ItemHolders.ContainsKey(___rod) ||
+                    !AttachedItems.ContainsKey(___rod) ||
                     !___floater.InWater ||
                     ___bobberJoint.linearLimit.limit <= 1f ||
                     __instance.gameObject.layer == 16)
@@ -185,6 +185,6 @@ namespace BetterFishing
                     }
                 }
             }
-        }        
+        }
     }
 }

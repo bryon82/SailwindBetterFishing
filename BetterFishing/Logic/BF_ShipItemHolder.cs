@@ -4,7 +4,7 @@ using static BetterFishing.BF_Plugin;
 namespace BetterFishing
 {
     internal class BF_ShipItemHolder : MonoBehaviour
-    {        
+    {
         private readonly Vector3 ROD_POSITION_OFFSET = new Vector3(0.309f, 1.1f, -0.38f);
         private readonly Vector3 ROD_ROTATION_OFFSET = new Vector3(-40f, 180f, 0f);
 
@@ -13,6 +13,9 @@ namespace BetterFishing
 
         private readonly Vector3 QUADRANT_POSITION_OFFSET = new Vector3(-0.0155f, 0.164f, -0.115f);
         private readonly Vector3 QUADRANT_ROTATION_OFFSET = new Vector3(90f, -90f, 0f);
+
+        private readonly Vector3 KNIFE_POSITION_OFFSET = new Vector3(0.05f, -0.115f, -0.182f);
+        private readonly Vector3 KNIFE_ROTATION_OFFSET = new Vector3(-90f, -90f, 0f);
 
         private Transform _itemRigidBody;
         private ShipItem _attachedItem;
@@ -44,8 +47,13 @@ namespace BetterFishing
                 localAttachOffset = QUADRANT_POSITION_OFFSET;
                 rotationOffset = Quaternion.Euler(QUADRANT_ROTATION_OFFSET);
             }
+            else if (item is ShipItemKnife)
+            {
+                localAttachOffset = KNIFE_POSITION_OFFSET;
+                rotationOffset = Quaternion.Euler(KNIFE_ROTATION_OFFSET);
+            }
 
-            ItemHolders.Add(item, this);
+            AttachedItems.Add(item, this);
             _attachedItem = item;
 
             Vector3 worldAttachPos = _itemRigidBody.TransformPoint(localAttachOffset);
@@ -64,8 +72,8 @@ namespace BetterFishing
                 return;
 
             _attachedItem.itemRigidbodyC.attached = false;
-
-            ItemHolders.Remove(_attachedItem);
+            AttachedItems.Remove(_attachedItem);
+            _attachedItem.GetComponent<BF_HolderAttachable>().DetachHolder();
             _attachedItem = null;
         }
 

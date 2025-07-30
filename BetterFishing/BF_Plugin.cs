@@ -4,7 +4,6 @@ using BepInEx.Logging;
 using HarmonyLib;
 using System.Collections.Generic;
 using System.Reflection;
-using UnityEngine;
 
 namespace BetterFishing
 {
@@ -14,10 +13,7 @@ namespace BetterFishing
     {
         public const string PLUGIN_GUID = "com.raddude82.betterfishing";
         public const string PLUGIN_NAME = "BetterFishing";
-        public const string PLUGIN_VERSION = "1.0.2";
-
-        public const string MODSAVEBACKUPS_GUID = "com.raddude82.modsavebackups";
-        public const string MODSAVEBACKUPS_VERSION = "1.1.1";
+        public const string PLUGIN_VERSION = "1.0.3";
 
         public const string IDLE_FISHING_GUID = "com.isa_idlefishing.patch";
 
@@ -29,8 +25,7 @@ namespace BetterFishing
         internal static void LogWarning(string message) => _logger.LogWarning(message);
         internal static void LogError(string message) => _logger.LogError(message);
 
-        [SerializeField]
-        internal static Dictionary<ShipItem, BF_ShipItemHolder> ItemHolders { get; set; }
+        internal static Dictionary<ShipItem, BF_ShipItemHolder> AttachedItems { get; set; }
         internal static bool IdleFishingFound { get; private set; } = false;
 
         private void Awake()
@@ -43,7 +38,7 @@ namespace BetterFishing
             Instance = this;
             _logger = Logger;
 
-            ItemHolders = new Dictionary<ShipItem, BF_ShipItemHolder>();
+            AttachedItems = new Dictionary<ShipItem, BF_ShipItemHolder>();
 
             Configs.InitializeConfigs();
 
