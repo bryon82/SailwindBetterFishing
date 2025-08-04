@@ -1,0 +1,52 @@
+ManifestFileVersion: 0
+CRC: 254796254
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e2b93a3f9af1f376be566f740cdb0a6d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b8116f27fc71347749468999d4be472c
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: f6fcad739cadc1b46968b10cceff7eb3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3406a2970a834fc4bbd77dd230d852b6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 24fc04fb62af7a4449555c27d62197ca, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 934ca9fccbaa40647b028786bd59c21c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: cd24cf1fcecfb3b4a9f8c1af0bc5a1a4, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/Custom/empty crate.prefab
+- Assets/Custom/sealing nails.prefab
+- Assets/Custom/hammer.prefab
+Dependencies: []

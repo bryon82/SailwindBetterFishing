@@ -18,7 +18,7 @@ namespace BetterFishing
                 if (!enableFishMovement.Value)
                     return;
 
-                var fishMovement = __instance.gameObject.AddComponent<BF_FishMovement>();
+                var fishMovement = __instance.gameObject.AddComponent<FishMovement>();
                 fishMovement.Fish = __instance;
             }
 
@@ -89,7 +89,7 @@ namespace BetterFishing
                     }
 
                     //if (___currentTargetTension > 0.95f)                    
-                    var maxTension = ___lastLineLength < 15f ? 0.95 : BF_FishMovement.FishTension(__instance.currentFish.name);
+                    var maxTension = ___lastLineLength < 15f ? 0.95 : FishMovement.FishTension(__instance.currentFish.name);
                     if (___currentTargetTension > maxTension)
                     {
                         ___snapTimer += Time.deltaTime;
@@ -151,39 +151,25 @@ namespace BetterFishing
                 return false;
             }
 
-            [HarmonyBefore(new string[] { IDLE_FISHING_GUID })]
-            [HarmonyPostfix]
-            [HarmonyPatch("Update")]
-            public static void Postfix(
-                FishingRodFish __instance,
-                ShipItemFishingRod ___rod,
-                SimpleFloatingObject ___floater,
-                ConfigurableJoint ___bobberJoint,
-                ref float ___fishTimer)
+            [HarmonyAfter("com.raddude82.sailadex")]
+            [HarmonyPrefix]
+            [HarmonyPatch("CollectFish")]
+            public static bool AdjustHookLossChance(FishingRodFish __instance, ShipItemFishingRod ___rod, ref ShipItem __result)
             {
-                if (__instance.currentFish != null ||
-                    ___rod.health <= 0f ||
-                    !AttachedItems.ContainsKey(___rod) ||
-                    !___floater.InWater ||
-                    ___bobberJoint.linearLimit.limit <= 1f ||
-                    __instance.gameObject.layer == 16)
+                ShipItem component = Object.Instantiate(__instance.currentFish, __instance.gameObject.transform.position, __instance.gameObject.transform.rotation).GetComponent<ShipItem>();
+                component.sold = true;
+                component.GetComponent<SaveablePrefab>().RegisterToSave();
+                __instance.GetComponent<MeshFilter>().sharedMesh = null;
+                __instance.GetComponent<Renderer>().enabled = false;
+                __instance.currentFish = null;
+                if (Random.Range(0, 100) < hookLossChance.Value)
                 {
-                    return;
+                    ___rod.DetachHook();
                 }
 
-                ___fishTimer -= Time.deltaTime;
-                float value = Vector3.Distance(__instance.transform.position, ___rod.transform.position);
-                float num = Mathf.InverseLerp(3f, 20f, value) * 2.5f + 0.5f;
-                if (___fishTimer <= 0f)
-                {
-                    ___fishTimer = 1f;
-
-                    num = IdleFishingFound ? num / 20f : num / 6.67f;
-                    if (Random.Range(0f, 100f) < num)
-                    {
-                        __instance.CatchFish();
-                    }
-                }
+                ___rod.big = false;
+                __result = component;
+                return false;
             }
         }
     }

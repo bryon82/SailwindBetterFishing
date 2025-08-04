@@ -46,9 +46,16 @@
     <Reference Include="Crest">
       <HintPath>E:\SteamLibrary\steamapps\common\Sailwind\Sailwind_Data\Managed\Crest.dll</HintPath>
     </Reference>
+    <Reference Include="HooksHangMore">
+      <HintPath>E:\SteamLibrary\steamapps\common\Sailwind\BepInEx\plugins\HooksHangMore\HooksHangMore.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="UnityEngine">
       <HintPath>E:\SteamLibrary\steamapps\common\Sailwind\Sailwind_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\SteamLibrary\steamapps\common\Sailwind\Sailwind_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AudioModule">
       <HintPath>E:\SteamLibrary\steamapps\common\Sailwind\Sailwind_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
@@ -65,19 +72,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BF_Plugin.cs" />
-    <Compile Include="Logic\BF_HolderAttachable.cs" />
+    <Compile Include="Scripts\CrateSealer.cs" />
+    <Compile Include="Scripts\ShipItemHammer.cs" />
+    <Compile Include="Scripts\ShipItemSealingNails.cs" />
+    <Compile Include="Patches\CratePatches.cs" />
     <Compile Include="Patches\FishingPatches.cs" />
-    <Compile Include="Patches\ItemHolderPatches.cs" />
+    <Compile Include="Patches\HammerPatches.cs" />
+    <Compile Include="Patches\PrefabLoadingPatches.cs" />
+    <Compile Include="Patches\PricePatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Logic\BF_ShipItemHolder.cs" />
-    <Compile Include="Logic\BF_FishMovement.cs" />
+    <Compile Include="Scripts\FishMovement.cs" />
+    <Compile Include="Scenes\AddShopItems.cs" />
+    <Compile Include="Utilities\AssetLoader.cs" />
     <Compile Include="Utilities\Configs.cs" />
     <Compile Include="Utilities\Extensions.cs" />
+    <Compile Include="Utilities\FishData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)$(AssemblyName).VS.props" />
+  <ItemGroup>
+    <_CopyItemsAssets Include="C:\Users\Bryon\dev\projects\SailwindMods\BetterFishing\Assets\tools_bundle" />
+    <_CopyItemsAssets Include="C:\Users\Bryon\dev\projects\SailwindMods\BetterFishing\Assets\tools_bundle.manifest" />
+  </ItemGroup>
   <Target Name="AfterBuild">
     <RemoveDir Directories="$(BepInExPluginsDirectory)\$(ModName)" />
     <Copy SourceFiles="$(ProjectDir)\bin\Debug\$(ModName).dll" DestinationFolder="$(BepInExPluginsDirectory)\$(ModName)" ContinueOnError="true" />
+    <Copy SourceFiles="@(_CopyItemsAssets)" DestinationFolder="$(BepInExPluginsDirectory)\$(ModName)\Assets\%(RecursiveDir)" ContinueOnError="true" />
   </Target>
 </Project>
