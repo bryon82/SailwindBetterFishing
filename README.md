@@ -4,25 +4,37 @@ Sailwind mod that makes the fishing experience better 🎣😎
 
 ## Features
 
-* Adds the ability to attach a fishing rod to a lamp hook. If you cast the line first and then attach the rod, fishing will continue. The rate at which you catch fish will be lower than if were holding the fishing rod. The idle fishing mod is not needed, however this mod is compatible with it and the catch rate when in the holder is slightly higher than if the rod is loose on the deck.
+* Adds a hammer, sealing nails, and empty crates to seal crates full of fish. The items are for sail at Gold Rock City, Dragon Cliffs, Fort Aestrin, and Fire Fish Town. Selling sealed crates of prepared fish is more lucrative than selling raw individual fish. See sealing crates below. The prices for Tuna, Eel, and North Fish have been adjusted to entice a fishing heavy style of gameplay with the crate sealing system. The prices of Swamp Snappers and Golden Albacore (can be caught with [NANDTweaks](https://github.com/NANDbrew/NANDTweaks) installed) have also been adjusted.
 * Fish move when caught instead of remaining motionless. Their speed will depend on their species. 
 * Fish will have different tension on the line depending on their species.
-* Adds the ability to attach a broom, chip log, quadrant, or knife to a lamp hook.
-<br>
-
-![Screenshot of fishing rod in holder](https://github.com/bryon82/SailwindBetterFishing/blob/main/Screenshots/rodInHolder.png)
+* Makes hook loss on collecting fish configurable. 
 
 <br>
 
 ![gif of rod moving because of fish movement](https://github.com/bryon82/SailwindBetterFishing/blob/main/Screenshots/fishMovement.gif)
 
+## Sealing Crates
+
+The requirement for sealing a crate is to prepare it in the same way it would be when you purchase a crate of fish. To achieve this these the following requirements must be met:
+* You need a hammer in your hand and a box of sealing nails nearby
+* The crate needs to be a standard size crate
+* The crate needs to only have one species of fish and nothing else
+* The types of fish that can be sealed are: Tuna, Sunspot Fish, Salmon, Eel, Trout, and North Fish
+* The number of fish needed in the crate depends on the species. All require 16 except Salmon: 12 and Eel: 9 
+* The fish cannot be burnt or spoiled
+* The fish need to be preserved in some manner: smoked, salted, or dried  
+
+If any of the requirements are not there will be hint text telling you why when you point the hammer at a crate. 
+
 ## Configurable
 
 * Fish movement and tension can be enabled/disabled. Enabled by default.
+* The percent chance you will lose a hook when collecting a fish.
 
 ### Requires
 
 * [BepInEx 5.4.23](https://github.com/BepInEx/BepInEx/releases)
+* [HooksHangMore 1.0.0]()
 
 ### Installation
 

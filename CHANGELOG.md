@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.0.4] - 2025-08-04
+
+### Added
+- Hammer, sealing nails, and empty crates for purchase in Gold Rock City, Dragon Cliffs, Fort Aestrin, and Fire Fish Town.
+- Crates can be sealed to make fishing more profitable as sealed preserved fish sell for more.
+- Price adjustments to make certain fish more profitable. See readme for which fish.
+- Config to adjust percent chance of a hook loss on collecting fish.
+- Dependency on HooksHangMore
+
+### Removed
+- Item holding functionality. This has been moved to its own mod [HooksHangMore](https://github.com/bryon82/SailwindHooksHangMore)!
+
 ## [v1.0.3] - 2025-07-30
 
 ### Added

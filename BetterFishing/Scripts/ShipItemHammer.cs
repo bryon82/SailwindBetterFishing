@@ -8,7 +8,6 @@ namespace BetterFishing
 {
     public class ShipItemHammer : ShipItem
     {
-        private bool animating;
         private bool swingingBack;
         private float initialHoldDistance;
         private float hammerTime;
@@ -17,7 +16,6 @@ namespace BetterFishing
         public override void OnLoad()
         {
             initialHoldDistance = holdDistance;
-            animating = false;
             var attachable = gameObject.AddComponent<HolderAttachable>();
             attachable.PositionOffset = new Vector3(0.02f, -0.15f, -0.12f);
             attachable.RotationOffset = new Vector3(270f, 270f, 0f);
@@ -31,7 +29,6 @@ namespace BetterFishing
                 var pointedAtItem = held.GetPointedAtItem();
                 if ((bool)pointedAtItem && pointedAtItem.sold && pointedAtItem.GetComponent<CrateSealer>() != null && pointedAtItem.GetComponent<CrateSealer>().CanSealCrate(!NailsInRange()))
                 {
-                    animating = true;
                     heldRotationOffset = 0f;
                     hammerTime = 0.25f;
                     SealCrate(pointedAtItem.GetComponent<ShipItemCrate>());
@@ -64,8 +61,6 @@ namespace BetterFishing
 
                 hammerTime -= Time.deltaTime;
             }
-            else
-                animating = false;
 
             if (held)
             {
@@ -136,7 +131,7 @@ namespace BetterFishing
         {
             lookedAtButton?.GetComponent<CrateSealer>()?.UpdateDescription(!NailsInRange());
 
-            if ((bool)lookedAtButton.GetComponent<ShipItemHolder>() && !lookedAtButton.GetComponent<ShipItemHolder>().IsOccupied)
+            if (lookedAtButton.GetComponent<ShipItemHolder>() != null && !lookedAtButton.GetComponent<ShipItemHolder>().IsOccupied)
                 return true;
 
             if (!big && lookedAtButton.allowPlacingItems)

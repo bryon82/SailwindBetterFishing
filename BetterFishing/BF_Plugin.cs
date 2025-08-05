@@ -17,7 +17,6 @@ namespace BetterFishing
         public const string HOOKS_HANG_MORE_GUID = "com.raddude82.hookshangmore";
         public const string HOOKS_HANG_MORE_VERSION = "1.0.0";
 
-
         internal static BF_Plugin Instance { get; private set; }
         private static ManualLogSource _logger;
 
