@@ -41,7 +41,7 @@ namespace BetterFishing
             Configs.InitializeConfigs();
 
             Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), PLUGIN_GUID);
-            SceneManager.sceneLoaded += AddShopItems.SceneLoaded;            
+            SceneManager.sceneLoaded += AddShopItems.SceneLoaded;
         }
     }
 }
