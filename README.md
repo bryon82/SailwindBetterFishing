@@ -24,7 +24,7 @@ The requirement for sealing a crate is to prepare it in the same way it would be
 * The fish cannot be burnt or spoiled
 * The fish need to be preserved in some manner: smoked, salted, or dried  
 
-If any of the requirements are not there will be hint text telling you why when you point the hammer at a crate. 
+If any of the requirements are not met there will be hint text telling you why when you point the hammer at a crate. 
 
 ## Configurable
 
