@@ -11,7 +11,7 @@ Sailwind mod that makes the fishing experience better 🎣😎
 
 <br>
 
-![Screenshot of hammer, sealing nails, and empty crates for sale](https://github.com/bryon82/SailwindBetterFishing/blob/main/Screenshots/hammerNailsCrate)
+![Screenshot of hammer, sealing nails, and empty crates for sale](https://github.com/bryon82/SailwindBetterFishing/blob/main/Screenshots/hammerNailsCrate.png)
 
 <br>
 
