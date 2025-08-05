@@ -11,7 +11,11 @@ Sailwind mod that makes the fishing experience better 🎣😎
 
 <br>
 
-![gif of rod moving because of fish movement](https://github.com/bryon82/SailwindBetterFishing/blob/main/Screenshots/fishMovement.gif)
+![Screenshot of hammer, sealing nails, and empty crates for sale](https://github.com/bryon82/SailwindBetterFishing/blob/main/Screenshots/hammerNailsCrate)
+
+<br>
+
+![Gif of rod moving because of fish movement](https://github.com/bryon82/SailwindBetterFishing/blob/main/Screenshots/fishMovement.gif)
 
 ## Sealing Crates
 
