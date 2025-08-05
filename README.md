@@ -34,7 +34,7 @@ If any of the requirements are not there will be hint text telling you why when 
 ### Requires
 
 * [BepInEx 5.4.23](https://github.com/BepInEx/BepInEx/releases)
-* [HooksHangMore 1.0.0]()
+* [HooksHangMore 1.0.0](https://github.com/bryon82/SailwindHooksHangMore/releases/latest)
 
 ### Installation
 

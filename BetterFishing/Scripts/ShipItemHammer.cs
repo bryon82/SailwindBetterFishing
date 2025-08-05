@@ -103,6 +103,7 @@ namespace BetterFishing
             crate.GetComponent<CrateSealer>().SealCrate(this);
             crate.GetComponent<SaveablePrefab>().Unregister();
             Destroy(crate.gameObject);
+            UISoundPlayer.instance.PlaySmallItemDropSound();
         }
 
         public void SwapCrate(int itemIndex, Vector3 position, Quaternion rotation, Transform parent)
@@ -111,7 +112,7 @@ namespace BetterFishing
                 .Where(f => f.ItemIndex == itemIndex)
                 .Select(f => f.CrateIndex)
                 .FirstOrDefault();
-            
+
             StartCoroutine(SwappingCrates(crateIndex, position, rotation, parent));
         }
 

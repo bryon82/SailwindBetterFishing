@@ -1,17 +1,14 @@
 ﻿using HarmonyLib;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BetterFishing.Patches
+namespace BetterFishing
 {
     internal class PricePatches
     {
         [HarmonyPatch(typeof(IslandMarket))]
         private class IslandMarketPatches
         {
+            [HarmonyBefore("com.raddude82.economicevents")]
             [HarmonyPostfix]
             [HarmonyPatch("GetGoodPriceAtSupply")]
             public static void FishPriceAdjust(int goodIndex, ref int __result)
@@ -27,6 +24,7 @@ namespace BetterFishing.Patches
         [HarmonyPatch(typeof(Shopkeeper))]
         private class ShopkeeperPatches
         {
+            [HarmonyBefore("com.raddude82.economicevents")]
             [HarmonyPostfix]
             [HarmonyPatch("GetPrice")]
             public static void FishPriceAdjust(ShipItem item, ref int __result)

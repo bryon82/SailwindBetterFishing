@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using UnityEngine;
 
-namespace BetterFishing.Patches
+namespace BetterFishing
 {
     internal class HammerPatches
     {

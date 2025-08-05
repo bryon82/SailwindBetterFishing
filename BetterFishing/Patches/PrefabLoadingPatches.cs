@@ -1,7 +1,7 @@
 ﻿using System;
 using HarmonyLib;
 
-namespace BetterFishing.Patches
+namespace BetterFishing
 {
     internal class PrefabLoadingPatches
     {
