@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [v1.0.4] - 2025-08-04
+## [v1.1.0] - 2025-08-05
 
 ### Added
 - Hammer, sealing nails, and empty crates for purchase in Gold Rock City, Dragon Cliffs, Fort Aestrin, and Fire Fish Town.
