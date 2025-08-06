@@ -48,9 +48,9 @@ namespace BetterFishing
             MakeShopItem("shop item (300)", scenery.transform, new Vector3(-76.959f, 3.08f, 44.419f), new Vector3(358f, 80f, 270f), AssetLoader.Hammer);
             MakeShopItem("shop item (301)", scenery.transform, new Vector3(-75.854f, 2.21f, 44.5095f), new Vector3(0f, 180f, 0f), AssetLoader.SealingNails);
             MakeShopItem("shop item (302)", scenery.transform, new Vector3(-75.854f, 2.44f, 44.5095f), new Vector3(0f, 180f, 0f), AssetLoader.SealingNails);
-            MakeShopItem("shop item (303)", scenery.transform, new Vector3(-78.403f, 2.097f, 43.976f), new Vector3(0f, 90f, 0f), AssetLoader.EmptyCrate);
-            MakeShopItem("shop item (304)", scenery.transform, new Vector3(-78.403f, 2.097f, 42.69f), new Vector3(0f, 90f, 0f), AssetLoader.EmptyCrate);
-            MakeShopItem("shop item (305)", scenery.transform, new Vector3(-78.403f, 2.783f, 43.333f), new Vector3(0f, 90f, 0f), AssetLoader.EmptyCrate);
+            MakeShopItem("shop item (303)", scenery.transform, new Vector3(-72.2f, 2.097f, 43.8f), new Vector3(0f, 90f, 0f), AssetLoader.EmptyCrate);
+            MakeShopItem("shop item (304)", scenery.transform, new Vector3(-71.16f, 2.097f, 43.8f), new Vector3(0f, 90f, 0f), AssetLoader.EmptyCrate);
+            MakeShopItem("shop item (305)", scenery.transform, new Vector3(-71.68f, 2.783f, 43.8f), new Vector3(0f, 90f, 0f), AssetLoader.EmptyCrate);
 
         }
 

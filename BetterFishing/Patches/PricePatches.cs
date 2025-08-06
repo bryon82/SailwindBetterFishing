@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using System.Linq;
+using UnityEngine;
 
 namespace BetterFishing
 {
@@ -16,7 +17,7 @@ namespace BetterFishing
                 var fish = FishData.Fish.FirstOrDefault(f => f.CrateIndex == goodIndex);
                 if (fish != null)
                 {
-                    __result *= fish.PriceMultiplier;
+                    __result = Mathf.RoundToInt(__result * fish.PriceMultiplier);
                 }
             }
         }
@@ -36,7 +37,7 @@ namespace BetterFishing
                 var fish = FishData.Fish.FirstOrDefault(f => f.CrateIndex == index || f.ItemIndex == index);
                 if (fish != null)
                 {
-                    __result *= fish.PriceMultiplier;
+                    __result = Mathf.RoundToInt(__result * fish.PriceMultiplier);
                 }
             }
         }

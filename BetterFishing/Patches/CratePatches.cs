@@ -49,5 +49,22 @@ namespace BetterFishing
                 }                    
             }
         }
+
+        [HarmonyPatch(typeof(CrateInventoryUI))]
+        private class CrateInventoryUIPatches
+        {
+            [HarmonyPrefix]
+            [HarmonyPatch("GetCrateDimensions")]
+            public static bool GetCrateDimensionsPatch(CrateInventoryUI __instance, ref Vector2 __result)
+            {
+                if (__instance.currentCrate.name == "empty crate(Clone)")
+                {
+                    __result = new Vector2(5f, 4f);
+                    return false;
+
+                }
+                return true;   
+            }
+        }
     }
 }
