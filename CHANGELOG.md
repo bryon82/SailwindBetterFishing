@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 - Price multiplier configs for all fish.
 
 ### Fixed
-- Crate inventory size in the CrateInventoryUI.
+- Crate inventory size for empty crates in the CrateInventoryUI.
 
 ### Updated
 - Placement of the empty crates at the Fort Aestrin shop as to not conflict with Lilith's Furniture mod.
