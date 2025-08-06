@@ -32,6 +32,7 @@ If any of the requirements are not met there will be hint text telling you why w
 
 ## Configurable
 
+* Price multipliers for all fish.
 * Fish movement and tension can be enabled/disabled. Enabled by default.
 * The percent chance you will lose a hook when collecting a fish.
 
