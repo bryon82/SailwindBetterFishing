@@ -4,6 +4,9 @@
     {
         public override void UpdateLookText()
         {
+            if (!sold)
+                return;
+            
             lookText = $"sealing nails\n({amount})";
         }
     }

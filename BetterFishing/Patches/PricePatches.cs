@@ -33,7 +33,7 @@ namespace BetterFishing
                 if (item.IsBulk())
                     return;
 
-                var index = item.gameObject.GetComponent<SaveablePrefab>().prefabIndex;
+                var index = item.GetPrefabIndex();
                 var fish = FishData.Fish.FirstOrDefault(f => f.CrateIndex == index || f.ItemIndex == index);
                 if (fish != null)
                 {

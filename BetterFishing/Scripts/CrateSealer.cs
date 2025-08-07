@@ -24,7 +24,7 @@ namespace BetterFishing
                 return;
             }
 
-            var containedItemIndex = crateInventory.containedItems[0].gameObject.GetComponent<SaveablePrefab>().prefabIndex;
+            var containedItemIndex = crateInventory.containedItems[0].GetPrefabIndex();
             var num = crateInventory.containedItems.Count;
             for (int i = num - 1; i >= 0; i--)
             {
@@ -85,8 +85,24 @@ namespace BetterFishing
 
         public bool CanSealCrate(bool nailsNotInRange)
         {
-            var inv = crateInventory.containedItems;            
-            if (IsNotStandardCrateSize() || nailsNotInRange || inv.Count <= 0 || !FishData.SealableFish.Contains(inv[0].name) || inv.Count != FishData.Fish.Where(f => f.ItemName == inv[0].name).Select(f => f.NumberInCrate).FirstOrDefault() || inv.Any(ci => ci.name != inv[0].name || ci.amount >= 1.5 || ci.GetComponent<FoodState>()?.spoiled > 0.9 || (ci.GetComponent<FoodState>()?.smoked < 0.99 && ci.GetComponent<FoodState>()?.salted < 0.99 && ci.GetComponent<FoodState>()?.dried < 0.99)))
+            var inv = crateInventory.containedItems;
+            var canNotSeal =
+                IsNotStandardCrateSize() ||
+                nailsNotInRange ||
+                inv.Count <= 0 ||
+                !FishData.SealableFish.Contains(inv[0].name) ||
+                inv.Count != FishData.Fish
+                    .Where(f => f.ItemName == inv[0].name)
+                    .Select(f => f.NumberInCrate)
+                    .FirstOrDefault() ||
+                inv.Any(ci => ci.name != inv[0].name ||
+                    ci.amount >= 1.5 ||
+                    ci.GetComponent<FoodState>()?.spoiled > 0.9 ||
+                    (ci.GetComponent<FoodState>()?.smoked < 0.99 &&
+                    ci.GetComponent<FoodState>()?.salted < 0.99 &&
+                    ci.GetComponent<FoodState>()?.dried < 0.99));
+
+            if (canNotSeal)
                 return false;
 
             return true;

@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.1.2] - 2025-08-07
+
+### Fixed
+- Empty crate and sealing nails colors having a washed out appearance.
+
 ## [v1.1.1] - 2025-08-06
 
 ### Added
