@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 using static BetterFishing.BF_Plugin;
 
 namespace BetterFishing
@@ -51,6 +49,11 @@ namespace BetterFishing
         {
             SealingNails.name = "sealing nails";
             Object.Destroy(SealingNails.GetComponent<ShipItemCrate>());
+            var tracker = SealingNails.GetComponent("EmbarkTracker");
+            if (tracker != null)
+            {
+                Object.Destroy(tracker);
+            }
 
             SealingNails.GetComponent<SaveablePrefab>().prefabIndex = 802;
 
@@ -77,6 +80,7 @@ namespace BetterFishing
             NailsLabel.GetComponent<MeshRenderer>().sharedMaterial.renderQueue = 2999;
 
             Object.DontDestroyOnLoad(SealingNails);
+            SealingNails.SetActive(false);
 
             LogDebug("Sealing nails initialized");
         }
@@ -85,17 +89,23 @@ namespace BetterFishing
         {
             EmptyCrate.name = "empty crate";
             Object.Destroy(EmptyCrate.GetComponent<Good>());
+            var tracker = EmptyCrate.GetComponent("EmbarkTracker");
+            if (tracker != null)
+            {
+                Object.Destroy(tracker);
+            }
 
             EmptyCrate.GetComponent<SaveablePrefab>().prefabIndex = 800;
 
             var itemCrate = EmptyCrate.GetComponent<ShipItemCrate>();
-            itemCrate.mass = 3;
+            itemCrate.mass = 5;
             itemCrate.value = 45;
             itemCrate.name = "empty crate";
             itemCrate.category = TransactionCategory.toolsAndSupplies;
             itemCrate.amount = 0;
 
             Object.DontDestroyOnLoad(EmptyCrate);
+            EmptyCrate.SetActive(false);
 
             LogDebug("Empty crate initialized");
         }

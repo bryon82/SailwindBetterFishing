@@ -1,6 +1,5 @@
 ﻿using System;
 using HarmonyLib;
-using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace BetterFishing
@@ -19,7 +18,8 @@ namespace BetterFishing
 
                 Items.EmptyCrate = Object.Instantiate(__instance.directory[1]);
                 Items.InitializeEmptyCrate();
-                Items.SealingNails = Object.Instantiate(__instance.directory[131]);
+
+                Items.SealingNails = Object.Instantiate(__instance.directory[131]);                
                 Items.InitializeNails();
 
                 __instance.directory[800] = Items.EmptyCrate;
