@@ -26,7 +26,7 @@ namespace BetterFishing
             itemHammer.floaterHeight = 1.6f;
         }
 
-        internal static void InitializeNailsOld()
+        internal static void InitializeNails()
         {
             var itemNails = SealingNails.AddComponent<ShipItemSealingNails>();
             itemNails.holdDistance = 1.25f;
@@ -45,7 +45,7 @@ namespace BetterFishing
             itemNails.big = true;
         }
 
-        internal static void InitializeNails()
+        internal static void InitializeNailsBroken()
         {
             SealingNails.name = "sealing nails";
             Object.Destroy(SealingNails.GetComponent<ShipItemCrate>());
@@ -81,11 +81,13 @@ namespace BetterFishing
 
             Object.DontDestroyOnLoad(SealingNails);
             SealingNails.SetActive(false);
+            SealingNails.GetComponent<SaveablePrefab>().Unregister();
+            SealingNails.tag = "Untagged";
 
             LogDebug("Sealing nails initialized");
         }
 
-        internal static void InitializeEmptyCrate()
+        internal static void InitializeEmptyCrateBroken()
         {
             EmptyCrate.name = "empty crate";
             Object.Destroy(EmptyCrate.GetComponent<Good>());
@@ -106,6 +108,7 @@ namespace BetterFishing
 
             Object.DontDestroyOnLoad(EmptyCrate);
             EmptyCrate.SetActive(false);
+            EmptyCrate.GetComponent<SaveablePrefab>().Unregister();
 
             LogDebug("Empty crate initialized");
         }

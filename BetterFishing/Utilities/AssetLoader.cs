@@ -22,12 +22,16 @@ namespace BetterFishing
             yield return request;
 
             Items.Hammer = request.allAssets.FirstOrDefault(a => a.name == "hammer") as GameObject;
-            Items.NailsLabel = request.allAssets.FirstOrDefault(a => a.name == "label") as GameObject;
+            Items.EmptyCrate = request.allAssets.FirstOrDefault(a => a.name == "empty crate") as GameObject;
+            Items.SealingNails = request.allAssets.FirstOrDefault(a => a.name == "sealing nails") as GameObject;
+            //Items.NailsLabel = request.allAssets.FirstOrDefault(a => a.name == "label") as GameObject;
 
-            if (Items.Hammer == null || Items.NailsLabel == null)
+            //if (Items.Hammer == null || Items.NailsLabel == null)
+            if (Items.Hammer == null || Items.EmptyCrate == null || Items.SealingNails == null)
                 LogError("Failed to load all assets from the bundle.");
 
             Items.InitializeHammer();
-        }        
+            Items.InitializeNails();
+        }
     }
 }

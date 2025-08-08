@@ -23,7 +23,8 @@ namespace BetterFishing
                     button.GetComponent<ShipItemCrate>().amount <= 0f &&
                     (bool)button.GetComponent<Good>() &&
                     button.GetComponent<Good>().GetMissionIndex() == -1 &&
-                    (bool)___pointer.GetHeldItem()?.GetComponent<ShipItemHammer>();
+                    (bool)___pointer.GetHeldItem() &&
+                    ___pointer.GetHeldItem().GetComponent<ShipItemHammer>();
 
                 if (showCrateText)
                 {

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.1.3] - 2025-08-07
+
+### Fixed
+- Save bug by reverting changes made for the colors.
+- Unable to interact with a crate after eating an item while the crate is still open.
+
 ## [v1.1.2] - 2025-08-07
 
 ### Fixed
