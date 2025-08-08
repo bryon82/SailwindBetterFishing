@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
@@ -8,10 +9,34 @@ namespace BetterFishing
 {
     internal class AssetLoader
     {
+        private static readonly List<string> assetPaths = new List<string>() {
+            Path.Combine(Path.GetDirectoryName(Instance.Info.Location), "Assets"),
+            Path.Combine(Path.GetDirectoryName(Instance.Info.Location))
+        };
+
+        public static string FindAssetPath(string fileName)
+        {
+            foreach (string basePath in assetPaths)
+            {
+                string fullPath = Path.Combine(basePath, fileName);
+                if (File.Exists(fullPath))
+                {
+                    return fullPath;
+                }
+            }
+            return null;
+        }
+
         internal static IEnumerator LoadAssets()
         {
             LogDebug("Loading bundle");
-            var bundlePath = Path.Combine(Path.GetDirectoryName(Instance.Info.Location), "Assets", "tools_bundle");
+            var bundlePath = FindAssetPath("tools_bundle");
+            if (string.IsNullOrEmpty(bundlePath))
+            {
+                LogError("Asset bundle not found");
+                yield break;
+            }
+
             var assetBundleRequest = AssetBundle.LoadFromFileAsync(bundlePath);
             yield return assetBundleRequest;
 
@@ -30,6 +55,6 @@ namespace BetterFishing
 
             Items.InitializeHammer();
             Items.InitializeNails();
-        }
+        }        
     }
 }
