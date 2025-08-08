@@ -1,5 +1,6 @@
 ﻿using System;
 using HarmonyLib;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace BetterFishing
@@ -16,11 +17,9 @@ namespace BetterFishing
                 if (__instance.directory.Length <= NEW_PREFAB_DIR_SIZE)
                     Array.Resize(ref __instance.directory, NEW_PREFAB_DIR_SIZE);
 
-                //Items.EmptyCrate = Object.Instantiate(__instance.directory[1]);
-                //Items.InitializeEmptyCrate();
-
-                //Items.SealingNails = Object.Instantiate(__instance.directory[131]);                
-                //Items.InitializeNails();
+                var sharedMaterial = __instance.directory[1].GetComponent<MeshRenderer>().sharedMaterial;
+                Items.EmptyCrate.GetComponent<MeshRenderer>().sharedMaterial = sharedMaterial;
+                Items.SealingNails.GetComponent<MeshRenderer>().sharedMaterial = sharedMaterial;
 
                 __instance.directory[800] = Items.EmptyCrate;
                 __instance.directory[801] = Items.Hammer;

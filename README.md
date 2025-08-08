@@ -36,6 +36,10 @@ If any of the requirements are not met there will be hint text telling you why w
 * Fish movement and tension can be enabled/disabled. Enabled by default.
 * The percent chance you will lose a hook when collecting a fish.
 
+## Info For Other Mod Authors
+
+I use prefab directory indexes 800, 801, and 802. I have screenshots of the stalls where I have shop items placed, check the Screenshots folder.
+
 ### Requires
 
 * [BepInEx 5.4.23](https://github.com/BepInEx/BepInEx/releases)
