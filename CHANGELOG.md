@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [v1.1.4] - 2025-08-08
 
+### Updated
+- Dependency HooksHangMore version
+
 ### Fixed
 - Empty crate and sealing nails colors having a washed out appearance, second attempt.
 

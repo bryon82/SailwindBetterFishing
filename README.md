@@ -43,7 +43,7 @@ I use prefab directory indexes 800, 801, and 802. I have screenshots of the stal
 ### Requires
 
 * [BepInEx 5.4.23](https://github.com/BepInEx/BepInEx/releases)
-* [HooksHangMore 1.0.0](https://github.com/bryon82/SailwindHooksHangMore/releases/latest)
+* [HooksHangMore](https://github.com/bryon82/SailwindHooksHangMore/releases/latest)
 
 ### Installation
 
