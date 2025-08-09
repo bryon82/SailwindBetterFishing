@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.1.6] - 2025-xx-xx
+
+### Fixed
+- Empty crate shop item position in Dragon Cliffs.
+
 ## [v1.1.5] - 2025-08-08
 
 ### Fixed

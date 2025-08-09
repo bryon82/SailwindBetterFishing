@@ -69,7 +69,7 @@ namespace BetterFishing
             var itemToMove = scenery.GetComponentsInChildren<Transform>()?.FirstOrDefault(t => t.name == "shop item spawner (158)");
             if (itemToMove != null)
                 itemToMove.localPosition = new Vector3(-85f, 4.116f, -548.19f);
-            MakeShopItem("shop item spawner (303)", scenery.transform, new Vector3(-86.233f, 4.116f, -547.05f), new Vector3(90f, 44.117f, 270f), Items.EmptyCrate);
+            MakeShopItem("shop item spawner (303)", scenery.transform, new Vector3(-86.5f, 4.116f, -546.9f), new Vector3(90f, 44.117f, 270f), Items.EmptyCrate);
             MakeShopItem("shop item spawner (304)", scenery.transform, new Vector3(-81.403f, 4.216f, -551.395f), new Vector3(0f, 134.117f, 270f), Items.EmptyCrate);
             MakeShopItem("shop item spawner (305)", scenery.transform, new Vector3(-82.403f, 4.216f, -550.395f), new Vector3(0f, 134.117f, 270f), Items.EmptyCrate);
 
