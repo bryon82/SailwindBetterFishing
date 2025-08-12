@@ -1,7 +1,6 @@
 ﻿using System;
 using HarmonyLib;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace BetterFishing
 {

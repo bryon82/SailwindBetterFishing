@@ -20,6 +20,9 @@ namespace BetterFishing
         internal static ConfigEntry<float> blueBubblerPriceMult;
         internal static ConfigEntry<float> fireFishPriceMult;
         internal static ConfigEntry<float> goldAlbacorePriceMult;
+        internal static ConfigEntry<bool> adjustStoveEfficiency;
+        internal static ConfigEntry<bool> adjustSaltPrice;
+        internal static ConfigEntry<bool> removeWholeFish;
 
         internal static void InitializeConfigs()
         {
@@ -43,12 +46,12 @@ namespace BetterFishing
             templeFishPriceMult = config.Bind(
                 "Fish Price Multipliers",
                 "templefish",
-                1f,
+                2f,
                 new ConfigDescription("Price multiplier when buying or selling this fish individually or sealed.", new AcceptableValueRange<float>(0, 10)));            
             sunspotFishPriceMult = config.Bind(
                 "Fish Price Multipliers",
                 "sunspot fish",
-                1f,
+                2f,
                 new ConfigDescription("Price multiplier when buying or selling this fish individually or sealed.", new AcceptableValueRange<float>(0, 10)));
             tunaPriceMult = config.Bind(
                 "Fish Price Multipliers",
@@ -58,12 +61,12 @@ namespace BetterFishing
             shimmertailPriceMult = config.Bind(
                 "Fish Price Multipliers",
                 "blue shimmertail",
-                1f,
+                2f,
                 new ConfigDescription("Price multiplier when buying or selling this fish individually or sealed.", new AcceptableValueRange<float>(0, 10)));
             salmonPriceMult = config.Bind(
                 "Fish Price Multipliers",
                 "salmon",
-                1f,
+                2f,
                 new ConfigDescription("Price multiplier when buying or selling this fish individually or sealed.", new AcceptableValueRange<float>(0, 10)));
             eelPriceMult = config.Bind(
                 "Fish Price Multipliers",
@@ -73,12 +76,12 @@ namespace BetterFishing
             blackfinHunterPriceMult = config.Bind(
                 "Fish Price Multipliers",
                 "blackfin hunter",
-                1f,
+                2f,
                 new ConfigDescription("Price multiplier when buying or selling this fish individually or sealed.", new AcceptableValueRange<float>(0, 10)));
             troutPriceMult = config.Bind(
                 "Fish Price Multipliers",
                 "trout",
-                1f,
+                2f,
                 new ConfigDescription("Price multiplier when buying or selling this fish individually or sealed.", new AcceptableValueRange<float>(0, 10)));
             northFishPriceMult = config.Bind(
                 "Fish Price Multipliers",
@@ -93,18 +96,33 @@ namespace BetterFishing
             blueBubblerPriceMult = config.Bind(
                 "Fish Price Multipliers",
                 "blue bubbler",
-                1f,
+                2f,
                 new ConfigDescription("Price multiplier when buying or selling this fish.", new AcceptableValueRange<float>(0, 10)));
             fireFishPriceMult = config.Bind(
                 "Fish Price Multipliers",
                 "fire fish",
-                1f,
+                2f,
                 new ConfigDescription("Price multiplier when buying or selling this fish.", new AcceptableValueRange<float>(0, 10)));
             goldAlbacorePriceMult = config.Bind(
                 "Fish Price Multipliers",
                 "gold albacore",
                 6f,
                 new ConfigDescription("Price multiplier when buying or selling this fish.", new AcceptableValueRange<float>(0, 10)));
+            adjustStoveEfficiency = config.Bind(
+                "Settings",
+                "Adjust stove efficiency",
+                true,
+                "This will make the stove and smoker cook faster. On the stove, fish will generally cook completely with one piece of firewood.");
+            adjustSaltPrice = config.Bind(
+                "Settings",
+                "Adjust salt price",
+                true,
+                "This will make salt half the price.");
+            removeWholeFish = config.Bind(
+                "Settings",
+                "Remove crateable whole fish from stores",
+                true,
+                "This will remove the whole fish that you are able to seal in a crate, from stores. In most instances they are replaced with fish slices.");
         }
     }
 }

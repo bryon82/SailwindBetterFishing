@@ -34,7 +34,7 @@ namespace BetterFishing
                     return;
 
                 var index = item.GetPrefabIndex();
-                var fish = FishData.Fish.FirstOrDefault(f => f.CrateIndex == index || f.ItemIndex == index);
+                var fish = FishData.Fish.FirstOrDefault(f => f.CrateIndex == index || f.ItemIndex == index || f.SliceIndex == index);
                 if (fish != null)
                 {
                     __result = Mathf.RoundToInt(__result * fish.PriceMultiplier);

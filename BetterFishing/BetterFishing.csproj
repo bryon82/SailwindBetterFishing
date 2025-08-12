@@ -72,7 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BF_Plugin.cs" />
-    <Compile Include="Patches\DebuggingPatches.cs" />
+    <Compile Include="Patches\FishSlicePricePatches.cs" />
+    <Compile Include="Patches\PreservingMethodPatches.cs" />
+    <Compile Include="Scenes\RemoveWholeFish.cs" />
     <Compile Include="Scripts\CrateSealer.cs" />
     <Compile Include="Scripts\ShipItemHammer.cs" />
     <Compile Include="Scripts\ShipItemSealingNails.cs" />

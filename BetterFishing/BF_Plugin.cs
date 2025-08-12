@@ -42,6 +42,7 @@ namespace BetterFishing
 
             Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), PLUGIN_GUID);
             SceneManager.sceneLoaded += AddShopItems.SceneLoaded;
+            SceneManager.sceneLoaded += RemoveWholeFish.SceneLoaded;
         }
     }
 }

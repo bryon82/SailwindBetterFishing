@@ -2,7 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
-## [v1.1.6] - 2025-xx-xx
+## [v1.1.6] - 2025-08-12
+
+### Added
+- Reduction of salt to half price.
+- Increase efficiencies of stove and smoker. Stove should cook most fish with one pice of firewood.
+- Removal of crateable whole fish from stores. Replaced them with their respective slices in most places.
+- Value to fish slices.
+- Configs to enable\disable stove efficiency adjustment, salt price adjustment, and whole fish removal.
+
+### Updated
+- Default values for fish price multipliers.
 
 ### Fixed
 - Empty crate shop item position in Dragon Cliffs.

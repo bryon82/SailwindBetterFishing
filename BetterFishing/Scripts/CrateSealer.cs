@@ -62,7 +62,7 @@ namespace BetterFishing
                 sb.AppendLine("no sealing nails nearby");
             if (inv.Any(ci => ci.name != inv[0].name))
                 sb.AppendLine("all items in crate must be the same to seal");
-            else if (!FishData.SealableFish.Contains(inv[0].name))
+            else if (!FishData.SealableFishNames.Contains(inv[0].name))
                 sb.AppendLine("items in crate are not sealable");
             if (countNeeded > 0 && inv.Count != countNeeded)
                 sb.AppendLine($"not enough items in crate to seal {inv.Count}/{countNeeded}");
@@ -90,7 +90,7 @@ namespace BetterFishing
                 IsNotStandardCrateSize() ||
                 nailsNotInRange ||
                 inv.Count <= 0 ||
-                !FishData.SealableFish.Contains(inv[0].name) ||
+                !FishData.SealableFishNames.Contains(inv[0].name) ||
                 inv.Count != FishData.Fish
                     .Where(f => f.ItemName == inv[0].name)
                     .Select(f => f.NumberInCrate)

@@ -51,7 +51,12 @@ namespace BetterFishing
             Items.SealingNails = request.allAssets.FirstOrDefault(a => a.name == "sealing nails") as GameObject;
 
             if (Items.Hammer == null || Items.EmptyCrate == null || Items.SealingNails == null)
-                LogError("Failed to load all assets from the bundle.");
+            {
+                LogError("Failed to load all required assets from the bundle");
+                yield break;
+            }
+
+            LogInfo("Assets loaded");
 
             Items.InitializeHammer();
             Items.InitializeNails();
