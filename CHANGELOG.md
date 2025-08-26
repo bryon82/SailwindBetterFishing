@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 
 ### Updated
 - Sealing nails can now be placed in your inventory.
+- HooksHangMore dependency version. 
 
 ## [v1.1.6] - 2025-08-12
 
