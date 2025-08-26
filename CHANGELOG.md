@@ -2,13 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.2.0] - 2025-08-26
+
+### Added
+- Lures for increase chances of catching tuna, eel, or north fish. In the game, each species of fish has a peak latitude where they are more likely to be caught and the more you are outside of the that latitude the less likely you are to catch that species. The added lures work best at the peak latitude for a fish and become less effective the farther you are from that latitude. If you are more than 6 degrees away from the peak latitude the lures work just like hooks.
+- Individual lures and small crates of lures added to Gold Rock City, Dragon Cliffs, and Fort Aestrin.
+
+### Updated
+- Sealing nails can now be placed in your inventory.
+
 ## [v1.1.6] - 2025-08-12
 
 ### Added
 - Reduction of salt to half price.
 - Increase efficiencies of stove and smoker. Stove should cook most fish with one pice of firewood.
 - Removal of crateable whole fish from stores. Replaced them with their respective slices in most places.
-- Value to fish slices.
+- Monetary value to fish slices.
 - Configs to enable\disable stove efficiency adjustment, salt price adjustment, and whole fish removal.
 
 ### Updated

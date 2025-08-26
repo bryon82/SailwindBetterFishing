@@ -28,12 +28,15 @@ namespace BetterFishing
                 return;
             }
 
-            MakeShopItem("shop item 300", scenery.transform, new Vector3(1539.7f, 7.235f, -385.26f), new Vector3(358f, 0f, 270f), Items.Hammer);
+            MakeShopItem("shop item 300", scenery.transform, new Vector3(1539.86f, 7.235f, -385.06f), new Vector3(358f, 0f, 270f), Items.Hammer);
             MakeShopItem("shop item 301", scenery.transform, new Vector3(1538.75f, 5.71f, -385.08f), new Vector3(0f, 55f, 0f), Items.SealingNails);
             MakeShopItem("shop item 302", scenery.transform, new Vector3(1538.75f, 6.17f, -385.08f), new Vector3(0f, 55f, 0f), Items.SealingNails);
             MakeShopItem("shop item 303", scenery.transform, new Vector3(1542.949f, 5.54f, -389.34f), new Vector3(0f, 325.504f, 0f), Items.EmptyCrate);
             MakeShopItem("shop item 304", scenery.transform, new Vector3(1535.669f, 6.54f, -378.58f), new Vector3(90f, 325.504f, 0f), Items.EmptyCrate);
             MakeShopItem("shop item 305", scenery.transform, new Vector3(1537.369f, 5.5f, -381.38f), new Vector3(0f, 325.504f, 0f), Items.EmptyCrate);
+            MakeShopItem("shop item 306", scenery.transform, new Vector3(1539.86f, 7.215f, -385.86f), new Vector3(90f, 0f, 0f), Items.SpoonLure);
+            MakeShopItem("shop item 307", scenery.transform, new Vector3(1539.05f, 5.87f, -386.2f), new Vector3(270f, 55f, 0f), Items.CrateSpoonLures);
+            MakeShopItem("shop item 308", scenery.transform, new Vector3(1539.6f, 5.87f, -387f), new Vector3(270f, 55f, 0f), Items.CrateSpoonLures);
         }
 
         internal static void FortAestrin()
@@ -51,7 +54,9 @@ namespace BetterFishing
             MakeShopItem("shop item (303)", scenery.transform, new Vector3(-72.2f, 2.097f, 43.8f), new Vector3(0f, 90f, 0f), Items.EmptyCrate);
             MakeShopItem("shop item (304)", scenery.transform, new Vector3(-71.16f, 2.097f, 43.8f), new Vector3(0f, 90f, 0f), Items.EmptyCrate);
             MakeShopItem("shop item (305)", scenery.transform, new Vector3(-71.68f, 2.783f, 43.8f), new Vector3(0f, 90f, 0f), Items.EmptyCrate);
-
+            MakeShopItem("shop item (306)", scenery.transform, new Vector3(-23.349f, 2.926f, 64.353f), new Vector3(90f, 64.1654f, 0f), Items.TopwaterLure);
+            MakeShopItem("shop item (307)", scenery.transform, new Vector3(-23.523f, 2.045f, 64.27f), new Vector3(0f, 24.2985f, 0f), Items.CrateTopwaterLures);
+            MakeShopItem("shop item (308)", scenery.transform, new Vector3(-23.523f, 2.275f, 64.27f), new Vector3(0f, 24.2985f, 0f), Items.CrateTopwaterLures);
         }
 
         internal static void DragonCliffs()
@@ -72,7 +77,9 @@ namespace BetterFishing
             MakeShopItem("shop item spawner (303)", scenery.transform, new Vector3(-86.5f, 4.116f, -546.9f), new Vector3(90f, 44.117f, 270f), Items.EmptyCrate);
             MakeShopItem("shop item spawner (304)", scenery.transform, new Vector3(-81.403f, 4.216f, -551.395f), new Vector3(0f, 134.117f, 270f), Items.EmptyCrate);
             MakeShopItem("shop item spawner (305)", scenery.transform, new Vector3(-82.403f, 4.216f, -550.395f), new Vector3(0f, 134.117f, 270f), Items.EmptyCrate);
-
+            MakeShopItem("shop item spawner (306)", scenery.transform, new Vector3(-84.48f, 4.266f, -548.85f), new Vector3(90f, 214.8614f, 0f), Items.SwimbaitLure);
+            MakeShopItem("shop item spawner (307)", scenery.transform, new Vector3(-83.82f, 3.752f, -548.424f), new Vector3(0f, 221.5683f, 0f), Items.CrateSwimbaitLures);
+            MakeShopItem("shop item spawner (308)", scenery.transform, new Vector3(-83.82f, 3.977f, -548.424f), new Vector3(0f, 221.5683f, 0f), Items.CrateSwimbaitLures);
         }
 
         internal static void FireFishTown()

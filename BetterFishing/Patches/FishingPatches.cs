@@ -1,8 +1,9 @@
 ﻿using Crest;
 using HarmonyLib;
+using System.Linq;
 using UnityEngine;
-using static BetterFishing.Configs;
 using static BetterFishing.BF_Plugin;
+using static BetterFishing.Configs;
 
 namespace BetterFishing
 {
@@ -171,6 +172,50 @@ namespace BetterFishing
                 __result = component;
                 return false;
             }
-        }
+
+            [HarmonyPrefix]
+            [HarmonyPatch("CatchFish")]
+            public static bool CatchWithLure(
+                FishingRodFish __instance,
+                ref float ___fishTimer,
+                ref float ___fishEnergy,
+                Rigidbody ___bobber)
+            {
+                var lureName = ___bobber.transform.GetChild(2).name;
+                if (lureName == "hook")
+                    return true;
+
+                var lure = Lure.Lures.FirstOrDefault(l => l.Name == lureName);
+                var peakLatDiff = Mathf.Abs(FloatingOriginManager.instance.GetGlobeCoords(__instance.gameObject.transform).z - lure.PeakLatitude);
+                if (peakLatDiff > 6)
+                {
+                    LogDebug($"{lure.Name} is not effective at this latitude");
+                    return true;
+                }
+
+                int chance = 25;
+                if (peakLatDiff <= 4)                
+                    chance = 50;                
+                if (peakLatDiff <= 2)                
+                    chance = 75;
+                
+                LogDebug($"Lure {lure.Name} chance: {chance}");
+                if (Random.Range(0, 100) > chance)
+                {
+                    LogDebug($"{lure.Name} caught other fish type");
+                    return true;
+                }
+
+                LogInfo("============== Catching fish! ==============");
+                __instance.currentFish = PrefabsDirectory.instance.directory[lure.TargetFishPrefabIndex];
+                __instance.GetComponent<MeshFilter>().sharedMesh = __instance.currentFish.GetComponent<MeshFilter>().sharedMesh;
+                __instance.GetComponent<Renderer>().enabled = true;
+                ___fishTimer = 6f;
+                ___fishEnergy = 1f;
+                __instance.fishDead = false;
+
+                return false;
+            }
+        }        
     }
 }

@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using System.Linq;
 using UnityEngine;
 using static BetterFishing.BF_Plugin;
 
@@ -8,6 +9,12 @@ namespace BetterFishing
     {
         private static GoPointer _goPointer;
         internal static TextMesh HintText {  get; private set; }
+        private static readonly string[] _lureCrateNames = 
+        {
+            "crate of spoon lures(Clone)",
+            "crate of swimbait lures(Clone)",
+            "crate of topwater lures(Clone)"
+        };
 
         [HarmonyPatch(typeof(LookUI), "RegisterPointer")]
         private class LookUIPatches
@@ -60,8 +67,13 @@ namespace BetterFishing
                 {
                     __result = new Vector2(5f, 4f);
                     return false;
-
                 }
+                else if (_lureCrateNames.Contains(__instance.currentCrate.name))
+                {
+                    __result = new Vector2(4f, 2f);
+                    return false;
+                }
+
                 return true;   
             }
         }

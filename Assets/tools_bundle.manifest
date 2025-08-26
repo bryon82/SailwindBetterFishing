@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3056529249
+CRC: 2424964515
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4fa5a908aed180e44b419c24f4ca03b2
+    Hash: 5175e831eb7943e61ad480690f49983f
   TypeTreeHash:
     serializedVersion: 2
-    Hash: b8116f27fc71347749468999d4be472c
+    Hash: a366adb0e8d470982f78bbe1aca8b4eb
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -34,6 +34,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 3406a2970a834fc4bbd77dd230d852b6, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: c07ae118ad6368540916b1e4159e6cda, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 24fc04fb62af7a4449555c27d62197ca, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 934ca9fccbaa40647b028786bd59c21c, type: 3}
@@ -46,7 +48,13 @@ ClassTypes:
 - Class: 199
   Script: {instanceID: 0}
 Assets:
+- Assets/Custom/swimbait lure.prefab
+- Assets/Custom/crate of swimbait lures.prefab
+- Assets/Custom/crate of topwater lures.prefab
 - Assets/Custom/empty crate.prefab
 - Assets/Custom/sealing nails.prefab
+- Assets/Custom/spoon lure.prefab
+- Assets/Custom/topwater lure.prefab
+- Assets/Custom/crate of spoon lures.prefab
 - Assets/Custom/hammer.prefab
 Dependencies: []

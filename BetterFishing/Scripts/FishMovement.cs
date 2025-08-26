@@ -1,5 +1,4 @@
 ﻿using Crest;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using static BetterFishing.BF_Plugin;
@@ -19,23 +18,6 @@ namespace BetterFishing
                 Tension = tension;
             }
         }
-
-        private static readonly Dictionary<string, FishProperties> _fishData = new Dictionary<string, FishProperties>
-        {
-            { "31 templefish (A)", new FishProperties(10f, 0.95f) },
-            { "32 sunspot fish (A)", new FishProperties(13f, 0.85f) },
-            { "46 tuna (A)", new FishProperties(20f, 0.78f) },
-            { "35 shimmertail (E)", new FishProperties(18f, 0.83f) },
-            { "33 salmon (E)", new FishProperties(26f, 0.77f) },
-            { "34 eel (E)", new FishProperties(30f, 0.72f) },
-            { "38 blackfin hunter (M)", new FishProperties(20f, 0.85f) },
-            { "36 trout (M)", new FishProperties(25f, 0.74f) },
-            { "37 north fish (M)", new FishProperties(22f, 0.79f) },
-            { "141 swamp fish 1 (snapper", new FishProperties(21f, 0.83f) },
-            { "142 swamp fish 2 (bubbler)", new FishProperties(15f, 0.9f) },
-            { "148 swamp fish 3", new FishProperties(28f, 0.76f) },
-            { "140 gold albacore", new FishProperties(32f, 0.7f) },
-        };
 
         private float _timer;
         private float _fishForce;
@@ -76,11 +58,6 @@ namespace BetterFishing
 
             if (_fishForce == 0f)
             {
-                //if (_fishData.ContainsKey(_fish.currentFish.name))
-                //{
-                //    var fishData = _fishData[_fish.currentFish.name];
-                //    _fishForce = fishData.Force;
-                //}
                 if (FishData.Fish.Any(f => f.PrefabName ==_fish.currentFish.name))
                 {                    
                     _fishForce = FishData.Fish.Where(f => f.PrefabName == _fish.currentFish.name).Select(f => f.Force).FirstOrDefault();
@@ -107,10 +84,6 @@ namespace BetterFishing
 
         public static float FishTension(string fishName)
         {
-            //if (_fishData.ContainsKey(fishName))
-            //{
-            //    return _fishData[fishName].Tension;
-            //}
             if (FishData.Fish.Any(f => f.PrefabName == fishName))
             {
                 return FishData.Fish.Where(f => f.PrefabName == fishName).Select(f => f.Tension).FirstOrDefault();

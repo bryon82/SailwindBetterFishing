@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="BF_Plugin.cs" />
     <Compile Include="Patches\FishSlicePricePatches.cs" />
+    <Compile Include="Patches\LurePatches.cs" />
     <Compile Include="Patches\PreservingMethodPatches.cs" />
     <Compile Include="Scenes\RemoveWholeFish.cs" />
     <Compile Include="Scripts\CrateSealer.cs" />
@@ -90,7 +91,9 @@
     <Compile Include="Utilities\Configs.cs" />
     <Compile Include="Utilities\Extensions.cs" />
     <Compile Include="Utilities\FishData.cs" />
+    <Compile Include="Utilities\Go.cs" />
     <Compile Include="Utilities\Items.cs" />
+    <Compile Include="Utilities\Lure.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)$(AssemblyName).VS.props" />

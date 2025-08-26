@@ -49,8 +49,22 @@ namespace BetterFishing
             Items.Hammer = request.allAssets.FirstOrDefault(a => a.name == "hammer") as GameObject;
             Items.EmptyCrate = request.allAssets.FirstOrDefault(a => a.name == "empty crate") as GameObject;
             Items.SealingNails = request.allAssets.FirstOrDefault(a => a.name == "sealing nails") as GameObject;
+            Items.SpoonLure = request.allAssets.FirstOrDefault(a => a.name == "spoon lure") as GameObject;
+            Items.SwimbaitLure = request.allAssets.FirstOrDefault(a => a.name == "swimbait lure") as GameObject;
+            Items.TopwaterLure = request.allAssets.FirstOrDefault(a => a.name == "topwater lure") as GameObject;
+            Items.CrateSpoonLures = request.allAssets.FirstOrDefault(a => a.name == "crate of spoon lures") as GameObject;
+            Items.CrateSwimbaitLures = request.allAssets.FirstOrDefault(a => a.name == "crate of swimbait lures") as GameObject;
+            Items.CrateTopwaterLures = request.allAssets.FirstOrDefault(a => a.name == "crate of topwater lures") as GameObject;
 
-            if (Items.Hammer == null || Items.EmptyCrate == null || Items.SealingNails == null)
+            if (Items.Hammer == null ||
+                Items.EmptyCrate == null ||
+                Items.SealingNails == null ||
+                Items.SpoonLure == null ||
+                Items.SwimbaitLure == null ||
+                Items.TopwaterLure == null ||
+                Items.CrateSpoonLures == null ||
+                Items.CrateSwimbaitLures == null ||
+                Items.CrateTopwaterLures == null)
             {
                 LogError("Failed to load all required assets from the bundle");
                 yield break;
@@ -58,8 +72,7 @@ namespace BetterFishing
 
             LogInfo("Assets loaded");
 
-            Items.InitializeHammer();
-            Items.InitializeNails();
-        }        
+            Items.Initialize();
+        }
     }
 }

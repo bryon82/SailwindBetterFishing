@@ -5,9 +5,14 @@ Sailwind mod that makes the fishing experience better 🎣😎
 ## Features
 
 * Adds a hammer, sealing nails, and empty crates to seal crates full of fish. The items are for sail at Gold Rock City, Dragon Cliffs, Fort Aestrin, and Fire Fish Town. Selling sealed crates of prepared fish is more lucrative than selling raw individual fish. See sealing crates below. The prices for Tuna, Eel, and North Fish have been adjusted to make a fishing heavy style of gameplay more lucrative with the crate sealing system. The prices of Swamp Snappers and Golden Albacore (can be caught with [NANDTweaks](https://github.com/NANDbrew/NANDTweaks) installed) have also been adjusted.
-* Fish move when caught instead of remaining motionless. Their speed will depend on their species. 
+* Removes all fish sold in crates from local shops.
+* Increases the efficiency of stoves and smokers.
+* Reduces the price of salt.
+* Adds monetary value to fish slices.
+* Adds lures for increase chances of catching tuna, eel, or north fish. In the game, each species of fish has a peak latitude where they are more likely to be caught and the more you are outside of the that latitude the less likely you are to catch that species. The added lures work best at the peak latitude for a fish and become less effective the farther you are from that latitude. If you are more than 6 degrees away from the peak latitude the lures work just like hooks.
+* Fish move when caught instead of remaining motionless. Their speed will depend on their species.
 * Fish will have different tension on the line depending on their species.
-* Makes hook loss on collecting fish configurable. 
+* Makes hook loss on collecting fish configurable.
 
 <br>
 
@@ -33,7 +38,7 @@ If any of the requirements are not met there will be hint text telling you why w
 ## Configurable
 
 * Price multipliers for all fish.
-* Fish movement and tension can be enabled/disabled. Enabled by default.
+* Fish movement, line tension, stove and smoker efficiency increase, salt price reduction, and removal of fish from local stores can be enabled/disabled. Enabled by default.
 * The percent chance you will lose a hook when collecting a fish.
 
 ## Info For Other Mod Authors
