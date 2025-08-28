@@ -16,7 +16,7 @@ Sailwind mod that makes the fishing experience better 🎣😎
 
 <br>
 
-![Screenshot of hammer, sealing nails, and empty crates for sale](https://github.com/bryon82/SailwindBetterFishing/blob/main/Screenshots/hammerNailsCrate.png)
+![Screenshot of hammer, sealing nails, ,empty crates, and lures for sale](https://github.com/bryon82/SailwindBetterFishing/blob/main/Screenshots/alankhStall.png)
 
 <br>
 
@@ -43,12 +43,12 @@ If any of the requirements are not met there will be hint text telling you why w
 
 ## Info For Other Mod Authors
 
-I use prefab directory indexes 800, 801, and 802. I have screenshots of the stalls where I have shop items placed, check the Screenshots folder.
+I use prefab directory indexes 800 - 808. I have screenshots of the stalls where I have shop items placed, check the Screenshots folder.
 
 ### Requires
 
 * [BepInEx 5.4.23](https://github.com/BepInEx/BepInEx/releases)
-* [HooksHangMore](https://github.com/bryon82/SailwindHooksHangMore/releases/latest)
+* [HooksHangMore >= 1.0.4](https://github.com/bryon82/SailwindHooksHangMore/releases/latest)
 
 ### Installation
 

@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.2.1] - 2025-08-28
+
+### Fixed
+- Glow in the dark labels on lure crates and sealing nails.
+
 ## [v1.2.0] - 2025-08-26
 
 ### Added
