@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.2.2] - 2025-09-15
+
+### Updated
+- Position of hammer in Gold Rock City shop to not conflict with bucket position.
+- Removed sealable fish from new port shops.
+
 ## [v1.2.1] - 2025-08-28
 
 ### Fixed

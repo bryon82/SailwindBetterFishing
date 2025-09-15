@@ -75,6 +75,12 @@ namespace BetterFishing
 
             if (scene.name == "island 33 M (cave)")
                 PlaceSlices("scenery");
+
+            if (scene.name == "island 40 (coffee)")
+                PlaceSlices("_island 40 scenery");
+
+            if (scene.name == "island 41 (mirage mountain)")
+                PlaceSlices("island 41 scenery");
         }
 
         internal static void PlaceSlices(string sceneObject)

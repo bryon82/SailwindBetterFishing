@@ -28,7 +28,10 @@ namespace BetterFishing
                 return;
             }
 
-            MakeShopItem("shop item 300", scenery.transform, new Vector3(1539.86f, 7.235f, -385.06f), new Vector3(358f, 0f, 270f), Items.Hammer);
+            var itemToMove = scenery.GetComponentsInChildren<Transform>()?.FirstOrDefault(t => t.name == "shop item (217)");
+            if (itemToMove != null)
+                itemToMove.localPosition = new Vector3(1539.777f, 7.558f, -385.538f);
+            MakeShopItem("shop item 300", scenery.transform, new Vector3(1539.36f, 7.235f, -385.16f), new Vector3(358f, 0f, 270f), Items.Hammer);
             MakeShopItem("shop item 301", scenery.transform, new Vector3(1538.75f, 5.71f, -385.08f), new Vector3(0f, 55f, 0f), Items.SealingNails);
             MakeShopItem("shop item 302", scenery.transform, new Vector3(1538.75f, 6.17f, -385.08f), new Vector3(0f, 55f, 0f), Items.SealingNails);
             MakeShopItem("shop item 303", scenery.transform, new Vector3(1542.949f, 5.54f, -389.34f), new Vector3(0f, 325.504f, 0f), Items.EmptyCrate);
