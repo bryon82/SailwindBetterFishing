@@ -1,68 +1,45 @@
-﻿using HooksHangMore;
-using System.Collections;
+﻿using System.Collections;
 using System.Linq;
 using UnityEngine;
 using static BetterFishing.BF_Plugin;
 
 namespace BetterFishing
 {
-    public class ShipItemHammer : ShipItem
+    public class HammerCrateSealer : MonoBehaviour
     {
         private bool swingingBack;
-        private float initialHoldDistance;
-        private float hammerTime;
+        internal float initialHoldDistance;
+        internal float hammerTime;
         private ShipItemSealingNails closestNailsInRange;
+        internal ShipItemHammer hammer;
 
-        public override void OnLoad()
-        {
-            initialHoldDistance = holdDistance;
-            var attachable = gameObject.AddComponent<HolderAttachable>();
-            attachable.PositionOffset = new Vector3(0.02f, -0.15f, -0.12f);
-            attachable.RotationOffset = new Vector3(270f, 270f, 0f);
-        }
-
-        public override void OnAltActivate()
-        {
-            base.OnAltActivate();
-            if (sold)
-            {
-                var pointedAtItem = held.GetPointedAtItem();
-                if ((bool)pointedAtItem && pointedAtItem.sold && pointedAtItem.GetComponent<CrateSealer>() != null && pointedAtItem.GetComponent<CrateSealer>().CanSealCrate(!NailsInRange()))
-                {
-                    heldRotationOffset = 0f;
-                    hammerTime = 0.25f;
-                    SealCrate(pointedAtItem.GetComponent<ShipItemCrate>());
-                }
-            }
-        }
-
-        public override void ExtraLateUpdate()
+        public void Update()
         {
             if (hammerTime > 0f)
             {
-                if (heldRotationOffset < -85f)
+                if (hammer.heldRotationOffset < -85f)
                 {
                     swingingBack = true;
                 }
 
-                if (heldRotationOffset > 0f)
+                if (hammer.heldRotationOffset > 0f)
                 {
                     swingingBack = false;
                 }
 
                 if (swingingBack)
                 {
-                    heldRotationOffset += Time.deltaTime * 550f;
+                    hammer.heldRotationOffset += Time.deltaTime * 550f;
                 }
                 else
                 {
-                    heldRotationOffset -= Time.deltaTime * 550f;
+                    hammer.heldRotationOffset -= Time.deltaTime * 550f;
                 }
 
                 hammerTime -= Time.deltaTime;
             }
 
-            if (held)
+            if (hammer.held)
             {
                 float radius = 2.5f;
                 Vector3 hammerPosition = transform.position;
@@ -75,7 +52,7 @@ namespace BetterFishing
                 foreach (Collider hit in hits)
                 {
                     var shipItemNails = hit.gameObject.GetComponent<ShipItemSealingNails>();
-                    if ( shipItemNails == null || !shipItemNails.sold || shipItemNails.amount <= 0) continue;
+                    if (shipItemNails == null || !shipItemNails.sold || shipItemNails.amount <= 0) continue;
 
                     float distanceSqr = (hit.transform.position - hammerPosition).sqrMagnitude;
                     if (distanceSqr < closestDistanceSqr)
@@ -85,11 +62,11 @@ namespace BetterFishing
                     }
                 }
 
-                closestNailsInRange = closest?.gameObject?.GetComponent<ShipItemSealingNails>();                
+                closestNailsInRange = closest?.gameObject?.GetComponent<ShipItemSealingNails>();
             }
         }
 
-        private bool NailsInRange()
+        internal bool NailsInRange()
         {
             if (closestNailsInRange == null)
                 return false;
@@ -126,19 +103,6 @@ namespace BetterFishing
             crate.sold = true;
             crate.GetComponent<Good>().RegisterAsMissionless();
             LogDebug("Swapped crates");
-        }
-
-        public override bool AllowOnItemClick(GoPointerButton lookedAtButton)
-        {
-            lookedAtButton?.GetComponent<CrateSealer>()?.UpdateDescription(!NailsInRange());
-
-            if (lookedAtButton.GetComponent<ShipItemHolder>() != null && !lookedAtButton.GetComponent<ShipItemHolder>().IsOccupied)
-                return true;
-
-            if (!big && lookedAtButton.allowPlacingItems)
-                return true;
-
-            return false;
         }
     }
 }

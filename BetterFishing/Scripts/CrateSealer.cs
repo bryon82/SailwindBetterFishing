@@ -16,7 +16,7 @@ namespace BetterFishing
             crateInventory = GetComponent<CrateInventory>();
         }
 
-        public void SealCrate(ShipItemHammer hammer)
+        public void SealCrate(HammerCrateSealer hammer)
         {
             if (!crateInventory)
             {

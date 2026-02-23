@@ -27,7 +27,6 @@ namespace BetterFishing
                 LurePatches.hookMaterial = __instance.directory[99].GetComponent<MeshRenderer>().sharedMaterial;
 
                 __instance.directory[800] = Items.EmptyCrate;
-                __instance.directory[801] = Items.Hammer;
                 __instance.directory[802] = Items.SealingNails;
                 __instance.directory[803] = Items.SpoonLure;
                 __instance.directory[804] = Items.SwimbaitLure;

@@ -46,7 +46,6 @@ namespace BetterFishing
             var request = assetBundle.LoadAllAssetsAsync();
             yield return request;
 
-            Items.Hammer = request.allAssets.FirstOrDefault(a => a.name == "hammer") as GameObject;
             Items.EmptyCrate = request.allAssets.FirstOrDefault(a => a.name == "empty crate") as GameObject;
             Items.SealingNails = request.allAssets.FirstOrDefault(a => a.name == "sealing nails") as GameObject;
             Items.SpoonLure = request.allAssets.FirstOrDefault(a => a.name == "spoon lure") as GameObject;
@@ -56,8 +55,7 @@ namespace BetterFishing
             Items.CrateSwimbaitLures = request.allAssets.FirstOrDefault(a => a.name == "crate of swimbait lures") as GameObject;
             Items.CrateTopwaterLures = request.allAssets.FirstOrDefault(a => a.name == "crate of topwater lures") as GameObject;
 
-            if (Items.Hammer == null ||
-                Items.EmptyCrate == null ||
+            if (Items.EmptyCrate == null ||
                 Items.SealingNails == null ||
                 Items.SpoonLure == null ||
                 Items.SwimbaitLure == null ||

@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.3.0] - 2025-09-15
+
+### Removed
+- Hammer since the base game now has a hammer.
+
+### Added
+- Crate sealing ability to hammer from base game.
+
+## Updated
+- Position of top water fishing lure in shop in Fort Aestrin.
+- Version in HooksHangMore dependency.
+
 ## [v1.2.2] - 2025-09-15
 
 ### Updated

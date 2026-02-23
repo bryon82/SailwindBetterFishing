@@ -12,10 +12,10 @@ namespace BetterFishing
     {
         public const string PLUGIN_GUID = "com.raddude82.betterfishing";
         public const string PLUGIN_NAME = "BetterFishing";
-        public const string PLUGIN_VERSION = "1.2.2";
+        public const string PLUGIN_VERSION = "1.3.0";
 
         public const string HOOKS_HANG_MORE_GUID = "com.raddude82.hookshangmore";
-        public const string HOOKS_HANG_MORE_VERSION = "1.0.4";
+        public const string HOOKS_HANG_MORE_VERSION = "1.0.7";
 
         internal static BF_Plugin Instance { get; private set; }
         private static ManualLogSource _logger;
@@ -34,7 +34,6 @@ namespace BetterFishing
             }
             Instance = this;
             _logger = Logger;
-
             
             StartCoroutine(AssetLoader.LoadAssets());
 
