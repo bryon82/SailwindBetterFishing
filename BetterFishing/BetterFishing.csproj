@@ -78,7 +78,6 @@
     <Compile Include="Scenes\RemoveWholeFish.cs" />
     <Compile Include="Scripts\CrateSealer.cs" />
     <Compile Include="Scripts\HammerCrateSealer.cs" />
-    <Compile Include="Scripts\ShipItemHammer.cs" />
     <Compile Include="Scripts\ShipItemSealingNails.cs" />
     <Compile Include="Patches\CratePatches.cs" />
     <Compile Include="Patches\FishingPatches.cs" />
