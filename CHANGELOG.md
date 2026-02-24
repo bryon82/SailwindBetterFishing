@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Crate sealing ability to hammer from base game.
 
-## Updated
+### Updated
 - Position of top water fishing lure in shop in Fort Aestrin.
 - Version in HooksHangMore dependency.
 
