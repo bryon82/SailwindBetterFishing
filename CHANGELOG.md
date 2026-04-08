@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [v1.3.0] - 2025-09-15
+## [v1.3.1] - 2026-04-08
+
+### Added
+- Disabling line breaking mechanic. Configurable, disabled by default.
+- Configuration option to increase how effective the lures are.
+
+## [v1.3.0] - 2026-02-23
 
 ### Removed
 - Hammer since the base game now has a hammer.

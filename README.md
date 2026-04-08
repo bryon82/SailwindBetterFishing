@@ -9,10 +9,11 @@ Sailwind mod that makes the fishing experience better 🎣😎
 * Increases the efficiency of stoves and smokers.
 * Reduces the price of salt.
 * Adds monetary value to fish slices.
-* Adds lures for increase chances of catching tuna, eel, or north fish. In the game, each species of fish has a peak latitude where they are more likely to be caught and the more you are outside of the that latitude the less likely you are to catch that species. The added lures work best at the peak latitude for a fish and become less effective the farther you are from that latitude. If you are more than 6 degrees away from the peak latitude the lures work just like hooks.
+* Adds lures for increase chances of catching tuna, eel, or north fish. In the game, each species of fish has a peak latitude where they are more likely to be caught and the more you are outside of the that latitude the less likely you are to catch that species. The added lures work best at the peak latitude for a fish and become less effective the farther you are from that latitude. If you are more than 6 degrees away from the peak latitude the lures work just like hooks. A config option allows you to increase the effectiveness of the lures.
 * Fish move when caught instead of remaining motionless. Their speed will depend on their species.
 * Fish will have different tension on the line depending on their species.
 * Makes hook loss on collecting fish configurable.
+* Option to disable the line break mechanic.
 
 <br>
 

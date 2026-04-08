@@ -198,7 +198,9 @@ namespace BetterFishing
                     chance = 50;                
                 if (peakLatDiff <= 2)                
                     chance = 75;
-                
+
+                chance += lureEffectiveness.Value;
+
                 LogDebug($"Lure {lure.Name} chance: {chance}");
                 if (Random.Range(0, 100) > chance)
                 {
@@ -215,6 +217,13 @@ namespace BetterFishing
                 __instance.fishDead = false;
 
                 return false;
+            }
+
+            [HarmonyPrefix]
+            [HarmonyPatch("ReleaseFish")]
+            public static bool DisableLineBreak()
+            {
+                return !disableLineBreak.Value;
             }
         }        
     }

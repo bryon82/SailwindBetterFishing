@@ -7,6 +7,8 @@ namespace BetterFishing
         internal static ConfigEntry<bool> enableFishMovement;
         internal static ConfigEntry<bool> enableFishTension;
         internal static ConfigEntry<int> hookLossChance;
+        internal static ConfigEntry<bool> disableLineBreak;
+        internal static ConfigEntry<int> lureEffectiveness;
         internal static ConfigEntry<float> templeFishPriceMult;
         internal static ConfigEntry<float> sunspotFishPriceMult;
         internal static ConfigEntry<float> tunaPriceMult;        
@@ -43,6 +45,20 @@ namespace BetterFishing
                 "Fishing hook loss chance",
                 31,
                 new ConfigDescription("Precent chance that your fishing hook is lost after collecting a caught fish.", new AcceptableValueRange<int>(0, 100)));
+            disableLineBreak = config.Bind(
+                "Settings",
+                "Disable line break",
+                false,
+                "Disables the line breaking from reeling in too fast.");
+            lureEffectiveness = config.Bind(
+                "Settings",
+                "Lure effectiveness",
+                0,
+                new ConfigDescription(
+                    "Changes the effectiveness of lures. 0 is the standard setting and increasing it raises your chances of catching the intended fish. Note: " +
+                    "Along with increasing your chance of catching intended fish, at 25 you will always catch the intended fish within 2 degrees of the peak " +
+                    "latitude and at 50 you will always catch intended fish within 4 degrees of the peak latitude.",
+                    new AcceptableValueRange<int>(0, 50)));
             templeFishPriceMult = config.Bind(
                 "Fish Price Multipliers",
                 "templefish",
