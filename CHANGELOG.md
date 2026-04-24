@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.3.2] - 2026-04-24
+
+### Added
+- Purchasable empty crates and sealing nails to stalls in Happy Bay and Oasis.
+- The ability to use small crates for sealing crates of preserved fish.
+
 ## [v1.3.1] - 2026-04-08
 
 ### Added

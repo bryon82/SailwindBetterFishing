@@ -56,8 +56,8 @@ namespace BetterFishing
             var sb = new StringBuilder();
             sb.AppendLine();
             var countNeeded = FishData.Fish.Where(f => f.ItemName == inv[0].name).Select(f => f.NumberInCrate).FirstOrDefault();
-            if (IsNotStandardCrateSize())
-                sb.AppendLine("need standard size crate to seal");
+            if (IsWrongCrateSize())
+                sb.AppendLine("need standard or small size crate to seal");
             if (nailsNotInRange)
                 sb.AppendLine("no sealing nails nearby");
             if (inv.Any(ci => ci.name != inv[0].name))
@@ -87,7 +87,7 @@ namespace BetterFishing
         {
             var inv = crateInventory.containedItems;
             var canNotSeal =
-                IsNotStandardCrateSize() ||
+                IsWrongCrateSize() ||
                 nailsNotInRange ||
                 inv.Count <= 0 ||
                 !FishData.SealableFishNames.Contains(inv[0].name) ||
@@ -108,10 +108,11 @@ namespace BetterFishing
             return true;
         }
 
-        private bool IsNotStandardCrateSize()
+        private bool IsWrongCrateSize()
         {
-            var isEmptyOrStandardSize = crate.GetComponent<Good>()?.sizeDescription == "standard crate" || crate.name == "empty crate";
-            return  !isEmptyOrStandardSize;
+            var sizeDescription = crate.GetComponent<Good>()?.sizeDescription;
+            var isCorrectSize = sizeDescription == "standard crate" || sizeDescription == "small crate" || crate.name == "empty crate";
+            return  !isCorrectSize;
         }
     }
 }

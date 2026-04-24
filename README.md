@@ -5,7 +5,7 @@ Sailwind mod that makes the fishing experience better 🎣😎
 ## Features
 
 * Adds a hammer, sealing nails, and empty crates to seal crates full of fish. The items are for sail at Gold Rock City, Dragon Cliffs, Fort Aestrin, and Fire Fish Town. Selling sealed crates of prepared fish is more lucrative than selling raw individual fish. See sealing crates below. The prices for Tuna, Eel, and North Fish have been adjusted to make a fishing heavy style of gameplay more lucrative with the crate sealing system. The prices of Swamp Snappers and Golden Albacore (can be caught with [NANDTweaks](https://github.com/NANDbrew/NANDTweaks) installed) have also been adjusted.
-* Removes all fish sold in crates from local shops.
+* Removes all fish that are also sold in crates from local shops.
 * Increases the efficiency of stoves and smokers.
 * Reduces the price of salt.
 * Adds monetary value to fish slices.
@@ -27,7 +27,7 @@ Sailwind mod that makes the fishing experience better 🎣😎
 
 The requirement for sealing a crate is to prepare it in the same way it would be when you purchase a crate of fish. To achieve this these the following requirements must be met:
 * You need a hammer in your hand and a box of sealing nails nearby
-* The crate needs to be a standard size crate
+* The crate needs to be a standard or small sized crate
 * The crate needs to only have one species of fish and nothing else
 * The types of fish that can be sealed are: Tuna, Sunspot Fish, Salmon, Eel, Trout, and North Fish
 * The number of fish needed in the crate depends on the species. All require 16 except Salmon: 12 and Eel: 9 

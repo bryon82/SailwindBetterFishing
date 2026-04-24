@@ -17,6 +17,10 @@ namespace BetterFishing
                 DragonCliffs();
             if (scene.name == "island 26 Lagoon SwampTemple")
                 FireFishTown();
+            if (scene.name == "island 20 A (Oasis)")
+                Oasis();
+            if (scene.name == "island 18 M (Oasis)")
+                HappyBay();
         }
 
         internal static void GoldRockCity()
@@ -96,6 +100,36 @@ namespace BetterFishing
             MakeShopItem("shop item (303)", scenery.transform, new Vector3(-4.4767f, 0.24f, 0.15f), new Vector3(0f, 5.3656f, 0f), Items.EmptyCrate);
             MakeShopItem("shop item (304)", scenery.transform, new Vector3(-7f, 0.2f, 0.75f), new Vector3(0f, 95.3656f, 0f), Items.EmptyCrate);
             MakeShopItem("shop item (305)", scenery.transform, new Vector3(-7f, 0.88f, 0.75f), new Vector3(0f, 95.3656f, 0f), Items.EmptyCrate);
+        }
+
+        internal static void Oasis()
+        {
+            var scenery = GameObject.Find("island 20 A (oasis) scenery");
+            if (scenery == null)
+            {
+                LogError("Oasis scenery not found.");
+                return;
+            }
+
+            MakeShopItem("shop item (301)", scenery.transform, new Vector3(78.174f, 15.798f, -142.55f), new Vector3(270f, 180f, 0f), Items.SealingNails);
+            MakeShopItem("shop item (302)", scenery.transform, new Vector3(78.073f, 15.45f, -144f), new Vector3(0f, 89.1775f, 0f), Items.EmptyCrate);
+            MakeShopItem("shop item (303)", scenery.transform, new Vector3(78.073f, 15.45f, -146.7f), new Vector3(0f, 89.1775f, 0f), Items.EmptyCrate);
+            MakeShopItem("shop item (304)", scenery.transform, new Vector3(78.073f, 15.45f, -149.4f), new Vector3(0f, 89.1775f, 0f), Items.EmptyCrate);
+        }
+
+        internal static void HappyBay()
+        {
+            var scenery = GameObject.Find("island 18 M (Oasis) scenery");
+            if (scenery == null)
+            {
+                LogError("Happy Bay scenery not found.");
+                return;
+            }
+
+            MakeShopItem("shop item (301)", scenery.transform, new Vector3(-137.68f, 5.58f, 22.87f), new Vector3(270f, 210f, 0f), Items.SealingNails);
+            MakeShopItem("shop item (302)", scenery.transform, new Vector3(-138.268f, 4.71f, 21.9f), new Vector3(0f, 30f, 0f), Items.EmptyCrate);
+            MakeShopItem("shop item (303)", scenery.transform, new Vector3(-137.74f, 4.71f, 22.84f), new Vector3(0f, 30f, 0f), Items.EmptyCrate);
+            MakeShopItem("shop item (304)", scenery.transform, new Vector3(-138.04f, 5.41f, 22.34f), new Vector3(0f, 30f, 0f), Items.EmptyCrate);
         }
 
         private static void MakeShopItem(string name, Transform parent, Vector3 position, Vector3 rotation, GameObject go)
