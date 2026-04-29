@@ -111,7 +111,12 @@ namespace BetterFishing
         private bool IsWrongCrateSize()
         {
             var sizeDescription = crate.GetComponent<Good>()?.sizeDescription;
-            var isCorrectSize = sizeDescription == "standard crate" || sizeDescription == "small crate" || crate.name == "empty crate";
+            var isCorrectSize = 
+                sizeDescription == "standard crate" || 
+                sizeDescription == "small crate" || 
+                crate.name == "empty crate" ||
+                crate.name == "firewood" ||
+                crate.name == "fishing hooks";
             return  !isCorrectSize;
         }
     }

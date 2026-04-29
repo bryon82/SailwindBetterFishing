@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.3.3] - 2026-04-26
+
+### Fixed
+- Not being able to seal small crates which originally contained firewood or fish hooks.
+
 ## [v1.3.2] - 2026-04-24
 
 ### Added
