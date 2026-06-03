@@ -1,5 +1,4 @@
 ﻿using Crest;
-using System.Linq;
 using UnityEngine;
 using static BetterFishing.BF_Plugin;
 
@@ -58,9 +57,9 @@ namespace BetterFishing
 
             if (_fishForce == 0f)
             {
-                if (FishData.Fish.Any(f => f.PrefabName ==_fish.currentFish.name))
-                {                    
-                    _fishForce = FishData.Fish.Where(f => f.PrefabName == _fish.currentFish.name).Select(f => f.Force).FirstOrDefault();
+                if (FishData.TryGetByPrefabName(_fish.currentFish.name, out var fish))
+                {
+                    _fishForce = fish.Force;
                 }
                 else
                 {
@@ -84,15 +83,13 @@ namespace BetterFishing
 
         public static float FishTension(string fishName)
         {
-            if (FishData.Fish.Any(f => f.PrefabName == fishName))
+            if (FishData.TryGetByPrefabName(fishName, out var fish))
             {
-                return FishData.Fish.Where(f => f.PrefabName == fishName).Select(f => f.Tension).FirstOrDefault();
+                return fish.Tension;
             }
-            else
-            {
-                LogWarning($"{fishName} not found in fish data.");
-                return 0.95f;
-            }
+
+            LogWarning($"{fishName} not found in fish data.");
+            return 0.95f;
         }
     }
 }

@@ -2,10 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-## [v1.3.3] - 2026-04-26
+## [v1.4.0] - 2026-06-03
 
-### Fixed
-- Not being able to seal small crates which originally contained firewood or fish hooks.
+### Updated
+- Changed the release process so hopefully some linux users will no longer have issues when unzipping the release file.
+
+### Performance Improvements
+- Some data structures were being rebuilt when called, these are now cached.
+- Changed multiple LINQ queries to instead use hash sets/dictionaries to find values.
 
 ## [v1.3.2] - 2026-04-24
 

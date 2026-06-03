@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using System.Linq;
 using UnityEngine;
 
 namespace BetterFishing
@@ -14,8 +13,7 @@ namespace BetterFishing
             [HarmonyPatch("GetGoodPriceAtSupply")]
             public static void FishPriceAdjust(int goodIndex, ref int __result)
             {
-                var fish = FishData.Fish.FirstOrDefault(f => f.CrateIndex == goodIndex);
-                if (fish != null)
+                if (FishData.TryGetByCrateIndex(goodIndex, out var fish))
                 {
                     __result = Mathf.RoundToInt(__result * fish.PriceMultiplier);
                 }
@@ -34,8 +32,7 @@ namespace BetterFishing
                     return;
 
                 var index = item.GetPrefabIndex();
-                var fish = FishData.Fish.FirstOrDefault(f => f.CrateIndex == index || f.ItemIndex == index || f.SliceIndex == index);
-                if (fish != null)
+                if (FishData.TryGetByAnyIndex(index, out var fish))
                 {
                     __result = Mathf.RoundToInt(__result * fish.PriceMultiplier);
                 }

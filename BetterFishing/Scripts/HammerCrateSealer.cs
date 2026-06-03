@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Linq;
 using UnityEngine;
 using static BetterFishing.BF_Plugin;
 
@@ -85,12 +84,10 @@ namespace BetterFishing
 
         public void SwapCrate(int itemIndex, Vector3 position, Quaternion rotation, Transform parent)
         {
-            var crateIndex = FishData.Fish
-                .Where(f => f.ItemIndex == itemIndex)
-                .Select(f => f.CrateIndex)
-                .FirstOrDefault();
-
-            StartCoroutine(SwappingCrates(crateIndex, position, rotation, parent));
+            if (FishData.TryGetByItemIndex(itemIndex, out var fish))
+            {
+                StartCoroutine(SwappingCrates(fish.CrateIndex, position, rotation, parent));
+            }
         }
 
         private IEnumerator SwappingCrates(int crateIndex, Vector3 position, Quaternion rotation, Transform parent)

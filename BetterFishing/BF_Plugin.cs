@@ -12,7 +12,7 @@ namespace BetterFishing
     {
         public const string PLUGIN_GUID = "com.raddude82.betterfishing";
         public const string PLUGIN_NAME = "BetterFishing";
-        public const string PLUGIN_VERSION = "1.3.3";
+        public const string PLUGIN_VERSION = "1.4.0";
 
         public const string HOOKS_HANG_MORE_GUID = "com.raddude82.hookshangmore";
         public const string HOOKS_HANG_MORE_VERSION = "1.0.7";
@@ -38,6 +38,7 @@ namespace BetterFishing
             StartCoroutine(AssetLoader.LoadAssets());
 
             Configs.InitializeConfigs();
+            FishData.Initialize();
 
             Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), PLUGIN_GUID);
             SceneManager.sceneLoaded += AddShopItems.SceneLoaded;
