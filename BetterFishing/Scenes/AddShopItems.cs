@@ -37,8 +37,8 @@ namespace BetterFishing
                 itemToMove.localPosition = new Vector3(1539.777f, 7.558f, -385.538f);
             MakeShopItem("shop item 301", scenery.transform, new Vector3(1538.75f, 5.71f, -385.08f), new Vector3(0f, 55f, 0f), Items.SealingNails);
             MakeShopItem("shop item 302", scenery.transform, new Vector3(1538.75f, 6.17f, -385.08f), new Vector3(0f, 55f, 0f), Items.SealingNails);
-            MakeShopItem("shop item 303", scenery.transform, new Vector3(1542.949f, 5.54f, -389.34f), new Vector3(0f, 325.504f, 0f), Items.EmptyCrate);
-            MakeShopItem("shop item 304", scenery.transform, new Vector3(1535.669f, 6.54f, -378.58f), new Vector3(90f, 325.504f, 0f), Items.EmptyCrate);
+            MakeShopItem("shop item 303", scenery.transform, new Vector3(1534.969f, 6.875f, -377.88f), new Vector3(0f, 325.504f, 0f), Items.EmptyCrate);
+            MakeShopItem("shop item 304", scenery.transform, new Vector3(1534.969f, 5.49f, -377.88f), new Vector3(0f, 325.504f, 0f), Items.EmptyCrate);
             MakeShopItem("shop item 305", scenery.transform, new Vector3(1537.369f, 5.5f, -381.38f), new Vector3(0f, 325.504f, 0f), Items.EmptyCrate);
             MakeShopItem("shop item 306", scenery.transform, new Vector3(1539.86f, 7.215f, -385.86f), new Vector3(90f, 0f, 0f), Items.SpoonLure);
             MakeShopItem("shop item 307", scenery.transform, new Vector3(1539.05f, 5.87f, -386.2f), new Vector3(270f, 55f, 0f), Items.CrateSpoonLures);
@@ -73,12 +73,12 @@ namespace BetterFishing
                 return;
             }
 
-            MakeShopItem("shop item spawner (301)", scenery.transform, new Vector3(-81.333f, 3.715f, -549.545f), new Vector3(0f, 224f, 0f), Items.SealingNails);
-            MakeShopItem("shop item spawner (302)", scenery.transform, new Vector3(-80.973f, 3.715f, -549.895f), new Vector3(0f, 224f, 0f), Items.SealingNails);
+            MakeShopItem("shop item spawner (301)", scenery.transform, new Vector3(-81.883f, 3.945f, -549.095f), new Vector3(0f, 224f, 0f), Items.SealingNails);
+            MakeShopItem("shop item spawner (302)", scenery.transform, new Vector3(-81.883f, 3.715f, -549.095f), new Vector3(0f, 224f, 0f), Items.SealingNails);
             var itemToMove = scenery.GetComponentsInChildren<Transform>()?.FirstOrDefault(t => t.name == "shop item spawner (158)");
             if (itemToMove != null)
                 itemToMove.localPosition = new Vector3(-85f, 4.116f, -548.19f);
-            MakeShopItem("shop item spawner (303)", scenery.transform, new Vector3(-86.5f, 4.116f, -546.9f), new Vector3(90f, 44.117f, 270f), Items.EmptyCrate);
+            MakeShopItem("shop item spawner (303)", scenery.transform, new Vector3(-86.6f, 4.116f, -547.0f), new Vector3(90f, 44.117f, 270f), Items.EmptyCrate);
             MakeShopItem("shop item spawner (304)", scenery.transform, new Vector3(-81.403f, 4.216f, -551.395f), new Vector3(0f, 134.117f, 270f), Items.EmptyCrate);
             MakeShopItem("shop item spawner (305)", scenery.transform, new Vector3(-82.403f, 4.216f, -550.395f), new Vector3(0f, 134.117f, 270f), Items.EmptyCrate);
             MakeShopItem("shop item spawner (306)", scenery.transform, new Vector3(-84.48f, 4.266f, -548.85f), new Vector3(90f, 214.8614f, 0f), Items.SwimbaitLure);
