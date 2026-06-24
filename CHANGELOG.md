@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.5.0] - 2026-06-23
+
+### Updated
+- Guid, removed the 82.
+- Guids for referenced mods in several patches.
+
 ## [v1.4.1] - 2026-06-05
 
 ### Updated

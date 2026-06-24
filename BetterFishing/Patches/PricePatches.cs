@@ -8,7 +8,7 @@ namespace BetterFishing
         [HarmonyPatch(typeof(IslandMarket))]
         private class IslandMarketPatches
         {
-            [HarmonyBefore("com.raddude82.economicevents")]
+            [HarmonyBefore("com.raddude.economicevents")]
             [HarmonyPostfix]
             [HarmonyPatch("GetGoodPriceAtSupply")]
             public static void FishPriceAdjust(int goodIndex, ref int __result)
@@ -23,7 +23,7 @@ namespace BetterFishing
         [HarmonyPatch(typeof(Shopkeeper))]
         private class ShopkeeperPatches
         {
-            [HarmonyBefore("com.raddude82.economicevents")]
+            [HarmonyBefore("com.raddude.economicevents")]
             [HarmonyPostfix]
             [HarmonyPatch("GetPrice")]
             public static void FishPriceAdjust(ShipItem item, ref int __result)

@@ -89,7 +89,7 @@ namespace BetterFishing
                         ___currentTargetTension -= Time.deltaTime * ___pullTensionMult * 0.2f;
                     }
 
-                    //if (___currentTargetTension > 0.95f)                    
+                    //if (___currentTargetTension > 0.95f)
                     var maxTension = ___lastLineLength < 15f ? 0.95 : FishMovement.FishTension(__instance.currentFish.name);
                     if (___currentTargetTension > maxTension)
                     {
@@ -152,7 +152,7 @@ namespace BetterFishing
                 return false;
             }
 
-            [HarmonyAfter("com.raddude82.sailadex")]
+            [HarmonyAfter("com.raddude.sailadex")]
             [HarmonyPrefix]
             [HarmonyPatch("CollectFish")]
             public static bool AdjustHookLossChance(FishingRodFish __instance, ShipItemFishingRod ___rod, ref ShipItem __result)
@@ -194,9 +194,9 @@ namespace BetterFishing
                 }
 
                 int chance = 25;
-                if (peakLatDiff <= 4)                
-                    chance = 50;                
-                if (peakLatDiff <= 2)                
+                if (peakLatDiff <= 4)
+                    chance = 50;
+                if (peakLatDiff <= 2)
                     chance = 75;
 
                 chance += lureEffectiveness.Value;
@@ -225,6 +225,6 @@ namespace BetterFishing
             {
                 return !disableLineBreak.Value;
             }
-        }        
+        }
     }
 }
