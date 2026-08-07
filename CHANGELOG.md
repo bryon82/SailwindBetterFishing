@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.5.1] - 2026-08-07
+
+### Fixed
+- Names of topwater and swimbait lures.
+- Positioning of bucket shop items in GRC so they don't overlap.
+
 ## [v1.5.0] - 2026-06-23
 
 ### Updated

@@ -152,7 +152,7 @@ namespace BetterFishing
                 return false;
             }
 
-            [HarmonyAfter("com.raddude.sailadex")]
+            [HarmonyAfter(SAILADEX_GUID)]
             [HarmonyPrefix]
             [HarmonyPatch("CollectFish")]
             public static bool AdjustHookLossChance(FishingRodFish __instance, ShipItemFishingRod ___rod, ref ShipItem __result)

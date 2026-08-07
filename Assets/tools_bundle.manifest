@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1423704891
+CRC: 541915225
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 7443cd7424be348c0def67a1eed552c6
+    Hash: 8a56fbd6b86674d06aaf2c86b5c09e9a
   TypeTreeHash:
     serializedVersion: 2
     Hash: a366adb0e8d470982f78bbe1aca8b4eb
@@ -56,5 +56,4 @@ Assets:
 - Assets/Custom/spoon lure.prefab
 - Assets/Custom/topwater lure.prefab
 - Assets/Custom/crate of spoon lures.prefab
-- Assets/Custom/hammer.prefab
 Dependencies: []

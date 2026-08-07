@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using UnityEngine;
+using static BetterFishing.BF_Plugin;
 
 namespace BetterFishing
 {
@@ -8,7 +9,7 @@ namespace BetterFishing
         [HarmonyPatch(typeof(IslandMarket))]
         private class IslandMarketPatches
         {
-            [HarmonyBefore("com.raddude.economicevents")]
+            [HarmonyBefore(ECONOMIC_EVENTS_GUID)]
             [HarmonyPostfix]
             [HarmonyPatch("GetGoodPriceAtSupply")]
             public static void FishPriceAdjust(int goodIndex, ref int __result)
@@ -23,7 +24,7 @@ namespace BetterFishing
         [HarmonyPatch(typeof(Shopkeeper))]
         private class ShopkeeperPatches
         {
-            [HarmonyBefore("com.raddude.economicevents")]
+            [HarmonyBefore(ECONOMIC_EVENTS_GUID)]
             [HarmonyPostfix]
             [HarmonyPatch("GetPrice")]
             public static void FishPriceAdjust(ShipItem item, ref int __result)

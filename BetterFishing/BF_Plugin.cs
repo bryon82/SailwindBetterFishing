@@ -12,10 +12,13 @@ namespace BetterFishing
     {
         public const string PLUGIN_GUID = "com.raddude.betterfishing";
         public const string PLUGIN_NAME = "BetterFishing";
-        public const string PLUGIN_VERSION = "1.5.0";
+        public const string PLUGIN_VERSION = "1.5.1";
 
         public const string HOOKS_HANG_MORE_GUID = "com.raddude.hookshangmore";
         public const string HOOKS_HANG_MORE_VERSION = "2.0.0";
+
+        public const string SAILADEX_GUID = "com.raddude.sailadex";
+        public const string ECONOMIC_EVENTS_GUID = "com.raddude.economicevents";
 
         internal static BF_Plugin Instance { get; private set; }
         private static ManualLogSource _logger;
