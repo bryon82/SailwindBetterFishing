@@ -12,7 +12,7 @@ namespace BetterFishing
     {
         public const string PLUGIN_GUID = "com.raddude.betterfishing";
         public const string PLUGIN_NAME = "BetterFishing";
-        public const string PLUGIN_VERSION = "1.5.1";
+        public const string PLUGIN_VERSION = "1.6.0";
 
         public const string HOOKS_HANG_MORE_GUID = "com.raddude.hookshangmore";
         public const string HOOKS_HANG_MORE_VERSION = "2.0.0";

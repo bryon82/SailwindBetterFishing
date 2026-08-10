@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.6.0] - 2026-08-10
+
+### Added
+- Market stalls in GRC, Ft. Aestrin, and Dragon Cliffs and moved all better fishing items for sale in those ports to them.
+
 ## [v1.5.1] - 2026-08-07
 
 ### Fixed
