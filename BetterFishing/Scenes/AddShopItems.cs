@@ -58,7 +58,7 @@ namespace BetterFishing
             MakeShopItem("shop item 306", scenery.transform, new Vector3(1545.55f, 6.86f, -362.16f), new Vector3(80f, 0f, 0f), Items.SpoonLure);
             MakeShopItem("shop item 307", scenery.transform, new Vector3(1545.25f, 7f, -361.66f), new Vector3(80f, 0f, 0f), Items.SpoonLure);
             MakeShopItem("shop item 308", scenery.transform, new Vector3(1544.8f, 7f, -362.8f), new Vector3(349f, 328f, 0f), Items.CrateSpoonLures);
-            MakeShopItem("shop item 309", scenery.transform, new Vector3(1544.35f, 5.87f, -362.1f), new Vector3(349f, 328f, 0f), Items.CrateSpoonLures);
+            MakeShopItem("shop item 309", scenery.transform, new Vector3(1544.35f, 7.17f, -362.1f), new Vector3(349f, 328f, 0f), Items.CrateSpoonLures);
         }
 
         internal static void FortAestrin()

@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BF_Plugin.cs" />
+    <Compile Include="Patches\AddGoldAlbacorePatches.cs" />
     <Compile Include="Patches\FishSlicePricePatches.cs" />
     <Compile Include="Patches\LurePatches.cs" />
     <Compile Include="Patches\PreservingMethodPatches.cs" />
@@ -100,6 +101,9 @@
   <ItemGroup>
     <_CopyItemsAssets Include="C:\Users\Bryon\dev\projects\SailwindMods\BetterFishing\Assets\tools_bundle" />
     <_CopyItemsAssets Include="C:\Users\Bryon\dev\projects\SailwindMods\BetterFishing\Assets\tools_bundle.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Quest\" />
   </ItemGroup>
   <Target Name="AfterBuild">
     <RemoveDir Directories="$(BepInExPluginsDirectory)\$(ModName)" />

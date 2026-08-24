@@ -1,7 +1,9 @@
 ﻿using BepInEx;
+using BepInEx.Bootstrap;
 using BepInEx.Logging;
 using HarmonyLib;
 using System.Reflection;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace BetterFishing
@@ -12,13 +14,14 @@ namespace BetterFishing
     {
         public const string PLUGIN_GUID = "com.raddude.betterfishing";
         public const string PLUGIN_NAME = "BetterFishing";
-        public const string PLUGIN_VERSION = "1.6.0";
+        public const string PLUGIN_VERSION = "1.7.0";
 
         public const string HOOKS_HANG_MORE_GUID = "com.raddude.hookshangmore";
         public const string HOOKS_HANG_MORE_VERSION = "2.0.0";
 
         public const string SAILADEX_GUID = "com.raddude.sailadex";
         public const string ECONOMIC_EVENTS_GUID = "com.raddude.economicevents";
+        public const string NANDTWEAKS_GUID = "com.nandbrew.nandtweaks";
 
         internal static BF_Plugin Instance { get; private set; }
         private static ManualLogSource _logger;
@@ -38,6 +41,16 @@ namespace BetterFishing
             Instance = this;
             _logger = Logger;
 
+            //foreach (var plugin in Chainloader.PluginInfos)
+            //{
+            //    var metadata = plugin.Value.Metadata;
+            //    if (metadata.GUID.Equals(NANDTWEAKS_GUID))
+            //    {
+            //        LogInfo("NANDTweaks mod found");
+            //        AddGoldAlbacorePatches.NANDTweaks = Traverse.Create(plugin.Value.Instance);
+            //    }
+            //}
+
             StartCoroutine(AssetLoader.LoadAssets());
 
             Configs.InitializeConfigs();
@@ -45,7 +58,7 @@ namespace BetterFishing
 
             Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), PLUGIN_GUID);
             SceneManager.sceneLoaded += AddShopItems.SceneLoaded;
-            SceneManager.sceneLoaded += RemoveWholeFish.SceneLoaded;
+            SceneManager.sceneLoaded += RemoveWholeFish.SceneLoaded;            
         }
     }
 }

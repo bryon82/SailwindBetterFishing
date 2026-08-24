@@ -20,18 +20,21 @@ namespace BetterFishing
 
         private float _timer;
         private float _fishForce;
-        private FishingRodFish _fish;
+        internal SimpleFloatingObject floater;
+        internal Rigidbody bobber;
 
-        public FishingRodFish Fish
-        {
-            get => _fish;
-            set => _fish = value;
-        }
+        private float _wiggleTime;
+        private float _wiggleSeed;
+        private float wiggleStrength = 5;
+
+        internal FishingRodFish Fish { get; set; }
 
         private void Awake()
         {
             _timer = 0f;
             _fishForce = 0f;
+
+            _wiggleSeed = Random.Range(0f, 1000f);
         }
 
         private void Update()
@@ -39,16 +42,25 @@ namespace BetterFishing
             if (GameState.wasInSettingsMenu)
                 return;
 
-            var fishDead = _fish.GetPrivateField<bool>("fishDead");
-            var lastLineLength = _fish.GetPrivateField<float>("lastLineLength");
-            var fishEnergy = _fish.GetPrivateField<float>("fishEnergy");
-            var floater = _fish.GetPrivateField<SimpleFloatingObject>("floater");
-            var bobber = _fish.GetPrivateField<Rigidbody>("bobber");
+            if (bobber is null || floater is null)
+            {
+                floater = Fish.GetPrivateField<SimpleFloatingObject>("floater");
+                bobber = Fish.GetPrivateField<Rigidbody>("bobber");
+            }
+
+            if (bobber is null || floater is null)
+                return;
+
+            UpdateFishWiggle(wiggleStrength);
+
+            var fishDead = Fish.GetPrivateField<bool>("fishDead");
+            var lastLineLength = Fish.GetPrivateField<float>("lastLineLength");
+            var fishEnergy = Fish.GetPrivateField<float>("fishEnergy");
 
             fishDead = fishDead && lastLineLength <= 15f;
-            _fish.SetPrivateField("fishDead", fishDead);
+            Fish.SetPrivateField("fishDead", fishDead);
 
-            if (fishDead || _fish.currentFish is null || fishEnergy <= 0f || !floater.InWater)
+            if (fishDead || Fish.currentFish is null || fishEnergy <= 0f || !floater.InWater)
             {
                 _fishForce = 0f;
                 floater.SetPrivateField("_buoyancyCoeff", 3f);
@@ -57,14 +69,14 @@ namespace BetterFishing
 
             if (_fishForce == 0f)
             {
-                if (FishData.TryGetByPrefabName(_fish.currentFish.name, out var fish))
+                if (FishData.TryGetByPrefabName(Fish.currentFish.name, out var fish))
                 {
                     _fishForce = fish.Force;
                 }
                 else
                 {
                     _fishForce = 10f;
-                    LogWarning($"{_fish.currentFish.name} not found");
+                    LogWarning($"{Fish.currentFish.name} not found");
                 }
             }
 
@@ -84,12 +96,55 @@ namespace BetterFishing
         public static float FishTension(string fishName)
         {
             if (FishData.TryGetByPrefabName(fishName, out var fish))
-            {
                 return fish.Tension;
-            }
 
             LogWarning($"{fishName} not found in fish data.");
             return 0.95f;
+        }
+
+        private void UpdateFishWiggle(float strength)
+        {
+            if (Fish.currentFish == null)
+                return;
+
+            _wiggleTime += Time.deltaTime;
+
+            float t = _wiggleTime + _wiggleSeed;
+
+            float sideForce =
+                Mathf.Sin(t * 8.0f) * 0.08f +
+                Mathf.Sin(t * 13.7f) * 0.03f;
+
+            float forwardForce =
+                Mathf.Sin(t * 6.5f) * 0.05f;
+
+            float yawTorque =
+                Mathf.Sin(t * 7.5f) * 2.5f +
+                Mathf.Sin(t * 12.8f) * 1.0f;
+
+            float rollTorque =
+                Mathf.Sin(t * 9.2f) * 1.5f +
+                Mathf.Sin(t * 15.1f) * 0.6f;
+
+            bobber.AddRelativeForce(
+                Vector3.right * sideForce * strength,
+                ForceMode.Force
+            );
+
+            bobber.AddRelativeForce(
+                Vector3.forward * forwardForce * strength,
+                ForceMode.Force
+            );
+
+            bobber.AddRelativeTorque(
+                Vector3.up * yawTorque * strength,
+                ForceMode.Force
+            );
+
+            bobber.AddRelativeTorque(
+                Vector3.forward * rollTorque * strength,
+                ForceMode.Force
+            );
         }
     }
 }

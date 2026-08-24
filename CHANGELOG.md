@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.7.0] - 2026-08-24
+
+### Added
+- Fish wiggle when on the hook.
+
+### Fixed
+- Spoon lure box position in GRC stall.
+
 ## [v1.6.0] - 2026-08-10
 
 ### Added
